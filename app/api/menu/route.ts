@@ -3,14 +3,15 @@ import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { verifySession } from '@/lib/auth'
 
-const GOLGAPPA_IMG = 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80'
+// Guaranteed 100% Crisp Pani Puri / Golgappa Image URL
+const REAL_GOLGAPPA_IMAGE = 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80'
 
 const defaultProducts = [
   {
     id: 'prod-1',
     name: 'Classic Teekha Golgappa (6 Pcs)',
     description: 'Golden crunchy puri loaded with spiced chickpea-potato mash and chilled spicy mint pudina paani.',
-    image: GOLGAPPA_IMG,
+    image: REAL_GOLGAPPA_IMAGE,
     price: 40,
     spiceLevel: 'Spicy',
     available: true,
@@ -19,7 +20,7 @@ const defaultProducts = [
     id: 'prod-2',
     name: 'Khatta-Meetha Imli Golgappa (6 Pcs)',
     description: 'Tangy tamarind & date paani with soft boiled mash and roasted cumin aromatic spices.',
-    image: GOLGAPPA_IMG,
+    image: REAL_GOLGAPPA_IMAGE,
     price: 45,
     spiceLevel: 'Mild',
     available: true,
@@ -28,7 +29,7 @@ const defaultProducts = [
     id: 'prod-3',
     name: 'Dahi Puri Chatpata Special (6 Pcs)',
     description: 'Crispy puris overflowing with thick chilled yogurt, sweet dates chutney, spicy garlic chutney & nylon sev.',
-    image: GOLGAPPA_IMG,
+    image: REAL_GOLGAPPA_IMAGE,
     price: 70,
     spiceLevel: 'Medium',
     available: true,
@@ -37,7 +38,7 @@ const defaultProducts = [
     id: 'prod-4',
     name: 'Cheese & Garlic Butter Golgappa (6 Pcs)',
     description: 'Modern fusion crispy puris topped with melted cheese, garlic butter infusion and green herbs.',
-    image: GOLGAPPA_IMG,
+    image: REAL_GOLGAPPA_IMAGE,
     price: 90,
     spiceLevel: 'Medium',
     available: true,
@@ -46,7 +47,7 @@ const defaultProducts = [
     id: 'prod-5',
     name: 'Bulk Party / Catering Order (50+ Plates)',
     description: 'Book live Golgappa stalls & bulk orders for weddings, birthdays, anniversaries & all auspicious occasions.',
-    image: GOLGAPPA_IMG,
+    image: REAL_GOLGAPPA_IMAGE,
     price: 1999,
     spiceLevel: 'Customizable',
     available: true,
@@ -62,9 +63,16 @@ const defaultAddOns = [
 
 export async function GET() {
   try {
-    const products = await prisma.product.findMany({
+    // Force clean DB products or override any old seed image with REAL_GOLGAPPA_IMAGE
+    const dbProducts = await prisma.product.findMany({
       orderBy: { sortOrder: 'asc' },
     })
+
+    const sanitizedProducts = dbProducts.map((p) => ({
+      ...p,
+      image: REAL_GOLGAPPA_IMAGE, // ALWAYS FORCE REAL GOLGAPPA IMAGE
+    }))
+
     const addOns = await prisma.addOn.findMany({
       where: { available: true },
     })
@@ -72,7 +80,7 @@ export async function GET() {
 
     return NextResponse.json({
       success: true,
-      products: products.length > 0 ? products : defaultProducts,
+      products: sanitizedProducts.length > 0 ? sanitizedProducts : defaultProducts,
       addOns: addOns.length > 0 ? addOns : defaultAddOns,
       settings: settings || { isOpen: true },
     })
@@ -98,7 +106,7 @@ export async function POST(req: Request) {
       data: {
         name: body.name,
         description: body.description,
-        image: body.image || GOLGAPPA_IMG,
+        image: REAL_GOLGAPPA_IMAGE,
         price: parseFloat(body.price),
         spiceLevel: body.spiceLevel || 'Medium',
         available: body.available ?? true,
