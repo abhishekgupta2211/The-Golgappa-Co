@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/components/LanguageContext";
 import { Language } from "@/lib/i18n";
-import { ShoppingBag, Globe, Menu, X, ShieldCheck, PartyPopper } from "lucide-react";
+import { ShoppingBag, Globe, Menu, X, ShieldCheck, PartyPopper, Star } from "lucide-react";
 
 export function Navbar({ onOpenOrderModal, cartCount }: { onOpenOrderModal: () => void; cartCount: number }) {
   const { lang, setLang, t } = useLanguage();
@@ -38,6 +38,10 @@ export function Navbar({ onOpenOrderModal, cartCount }: { onOpenOrderModal: () =
             <Link href="/catering" className="text-amber-300 hover:text-amber-200 transition py-1 flex items-center gap-1 font-black px-3 py-1 rounded-full bg-emerald-900/80 border border-amber-400/40">
               <PartyPopper className="w-3.5 h-3.5 text-amber-400" />
               <span>{t.navCatering}</span>
+            </Link>
+            <Link href="/reviews" className="hover:text-amber-300 transition py-1 flex items-center gap-1 text-amber-300 font-bold">
+              <Star className="w-3.5 h-3.5 fill-amber-300 text-amber-300" />
+              <span>Reviews</span>
             </Link>
             <Link href="/about" className="hover:text-amber-300 transition py-1">{t.navAbout}</Link>
             <Link href="/visit" className="hover:text-amber-300 transition py-1">{t.navVisit}</Link>
