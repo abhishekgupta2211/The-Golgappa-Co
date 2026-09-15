@@ -1,0 +1,110 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  password  String
+  name      String
+  role      String   @default("ADMIN")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Product {
+  id          String      @id @default(cuid())
+  name        String
+  description String
+  image       String
+  price       Float
+  available   Boolean     @default(true)
+  spiceLevel  String      @default("Medium") // Mild, Medium, Spicy, Extra Spicy
+  sortOrder   Int         @default(0)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  orderItems  OrderItem[]
+}
+
+model AddOn {
+  id          String            @id @default(cuid())
+  name        String
+  description String?
+  price       Float
+  available   Boolean           @default(true)
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  orderAddOns OrderItemAddOn[]
+}
+
+model Order {
+  id             String      @id @default(cuid())
+  orderNumber    String      @unique // e.g. GP-20260915-001
+  customerName   String
+  customerPhone  String
+  pickupDate     String
+  pickupTime     String
+  subtotal       Float
+  total          Float
+  paymentMethod  String      @default("PAY_AT_STALL")
+  paymentStatus  String      @default("UNPAID") // UNPAID, PAID
+  orderStatus    String      @default("NEW") // NEW, ACCEPTED, PREPARING, READY, COMPLETED, CANCELLED
+  notes          String?
+  cancelReason   String?
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  items          OrderItem[]
+}
+
+model OrderItem {
+  id             String           @id @default(cuid())
+  orderId        String
+  order          Order            @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId      String
+  product        Product          @relation(fields: [productId], references: [id])
+  quantity       Int
+  unitPrice      Float
+  totalPrice     Float
+  spiceLevel     String
+  paniPreference String
+  addOns         OrderItemAddOn[]
+}
+
+model OrderItemAddOn {
+  id          String    @id @default(cuid())
+  orderItemId String
+  orderItem   OrderItem @relation(fields: [orderItemId], references: [id], onDelete: Cascade)
+  addOnId     String
+  addOn       AddOn     @relation(fields: [addOnId], references: [id])
+  price       Float
+}
+
+model ShopSettings {
+  id                   String   @id @default("default")
+  shopName             String   @default("THE GOLGAPPA CO.")
+  tagline              String   @default("Crispy. Chatpata. Addictive.")
+  phone                String   @default("9876543210")
+  whatsapp             String   @default("9876543210")
+  address              String   @default("Main Market Street, Gourmet Hub")
+  googleMapsUrl        String   @default("https://maps.app.goo.gl/jm4LXsy1NSKZ38P17?g_st=aw")
+  isOpen               Boolean  @default(true)
+  openingTime          String   @default("03:00 PM")
+  closingTime          String   @default("10:00 PM")
+  slotDurationMinutes  Int      @default(15)
+  maxOrdersPerSlot     Int      @default(10)
+  updatedAt            DateTime @updatedAt
+}
+
+model PickupSlot {
+  id          String   @id @default(cuid())
+  timeLabel   String   // e.g. "05:00 PM"
+  maxCapacity Int      @default(10)
+  isActive    Boolean  @default(true)
+}
