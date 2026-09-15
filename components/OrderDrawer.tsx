@@ -36,6 +36,7 @@ export function OrderDrawer({
   const [pickupTime, setPickupTime] = useState("ASAP");
   const [notes, setNotes] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [createdOrder, setCreatedOrder] = useState<any>(null);
 
   // Fallback Menu Fetching if products prop is empty
   const [internalProducts, setInternalProducts] = useState<Product[]>([]);
