@@ -9,6 +9,7 @@ import { MenuSection, Product } from "@/components/MenuSection";
 import { OrderDrawer } from "@/components/OrderDrawer";
 import { AboutVisitSection } from "@/components/AboutVisitSection";
 import { ReviewsSection } from "@/components/ReviewsSection";
+import { GolgappaInteractiveAnimation } from "@/components/GolgappaInteractiveAnimation";
 import { useLanguage } from "@/components/LanguageContext";
 import { Heart, PartyPopper } from "lucide-react";
 import Link from "next/link";
@@ -52,10 +53,13 @@ export default function HomePage() {
       />
 
       <main className="flex-1 w-full">
-        {/* 1. Cinematic Hero */}
+        {/* 1. Cinematic Animated Hero with Step-by-Step Crafting */}
         <Hero onBookNow={() => setDrawerOpen(true)} />
+
+        {/* 2. Interactive Animated Golgappa Crafting Breakdown */}
+        <GolgappaInteractiveAnimation />
         
-        {/* 2. Editorial Legacy Section (20+ YEARS) */}
+        {/* 3. Editorial Legacy Section (20+ YEARS) */}
         <LegacySection />
 
         {/* 3. Event & Wedding Catering Banner */}
