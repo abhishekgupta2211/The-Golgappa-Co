@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { Star, ExternalLink, CheckCircle2, ThumbsUp, ShieldCheck } from "lucide-react";
+import { motion } from "framer-motion";
+import { Star, ExternalLink, CheckCircle2, ThumbsUp, ShieldCheck, Sparkles } from "lucide-react";
 
 export function ReviewsSection() {
   const [filterRating, setFilterRating] = useState<number | 'ALL'>('ALL');
@@ -74,26 +75,42 @@ export function ReviewsSection() {
     : allGoogleReviews.filter(r => r.rating === filterRating);
 
   return (
-    <section id="reviews" className="py-20 w-full bg-[#f4efe4] text-gray-900 border-t border-b border-emerald-900/10">
-      <div className="w-full px-4 sm:px-8 lg:px-12 space-y-10">
+    <section id="reviews" className="py-24 w-full bg-[#020705] text-white border-t border-b border-emerald-900/40 relative overflow-hidden">
+      
+      {/* Glow Effect */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-emerald-600/10 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="w-full px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto relative z-10 space-y-16">
         
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3">
-          <span className="text-emerald-800 font-extrabold uppercase text-xs bg-emerald-100 px-4 py-1.5 rounded-full border border-emerald-300">
-            GOOGLE MAPS VERIFIED REVIEWS
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-black text-[#0f382c] font-serif">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto space-y-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 bg-[#091f18] border border-amber-400/40 px-4 py-1.5 rounded-full text-amber-300 text-xs font-black uppercase tracking-wider"
+          >
+            <Sparkles className="w-4 h-4 text-amber-400" />
+            <span>GOOGLE MAPS VERIFIED REVIEWS</span>
+          </motion.div>
+
+          <h2 className="text-4xl sm:text-6xl font-black font-serif uppercase tracking-tight text-[#fffdf7]">
             Loved by 10,000+ Foodies
           </h2>
-          <p className="text-gray-600 font-medium text-sm sm:text-base">
-            Verified feedback from street food lovers visiting Mahesh Kumar Gupta's stall at Near Central Park!
+          <p className="text-emerald-200/80 font-medium text-base sm:text-lg">
+            Real customer ratings & feedback for Mahesh Kumar Gupta at Near Central Park!
           </p>
         </div>
 
-        {/* Big Google Rating Banner */}
-        <div className="w-full max-w-5xl mx-auto bg-gradient-to-r from-[#071d17] via-[#0f382c] to-[#071d17] text-white p-6 sm:p-10 rounded-3xl shadow-2xl border-2 border-amber-400/40 flex flex-col md:flex-row items-center justify-between gap-6">
+        {/* 2026 Big Google Rating Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="w-full max-w-5xl mx-auto bg-[#091f18]/90 border-2 border-amber-400/50 text-white p-6 sm:p-10 rounded-3xl shadow-2xl backdrop-blur-2xl flex flex-col md:flex-row items-center justify-between gap-6"
+        >
           <div className="space-y-3 text-center md:text-left">
-            <div className="inline-flex items-center gap-2 bg-amber-400 text-emerald-950 font-black text-xs px-3 py-1 rounded-full uppercase">
+            <div className="inline-flex items-center gap-2 bg-amber-400 text-emerald-950 font-black text-xs px-3.5 py-1 rounded-full uppercase tracking-wider">
               Google Maps Location Verified
             </div>
             <div className="flex items-center justify-center md:justify-start gap-4">
@@ -104,10 +121,10 @@ export function ReviewsSection() {
                     <Star key={i} className="w-6 h-6 fill-amber-400" />
                   ))}
                 </div>
-                <p className="text-xs text-emerald-200 font-bold mt-1">Based on 520+ Google Maps Reviews</p>
+                <p className="text-xs text-emerald-200 font-bold mt-1">Based on 520+ Google Maps Customer Reviews</p>
               </div>
             </div>
-            <p className="text-xs sm:text-sm text-emerald-100 font-medium">
+            <p className="text-xs sm:text-sm text-emerald-100/90 font-medium">
               📍 Near Central Park, Main Market Street • Phone: 9369610213
             </p>
           </div>
@@ -116,51 +133,63 @@ export function ReviewsSection() {
             href="https://maps.app.goo.gl/jm4LXsy1NSKZ38P17?g_st=aw"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full md:w-auto bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-300 text-emerald-950 font-black text-sm sm:text-base px-6 py-3.5 rounded-2xl shadow-xl transition flex items-center justify-center gap-2.5 shrink-0"
+            className="w-full md:w-auto bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-500 hover:from-amber-300 text-emerald-950 font-black text-xs sm:text-sm px-7 py-4 rounded-2xl shadow-xl transition flex items-center justify-center gap-2.5 shrink-0 uppercase tracking-wider"
           >
             <span>Open Google Maps Reviews</span>
             <ExternalLink className="w-4 h-4" />
           </a>
-        </div>
+        </motion.div>
 
-        {/* Reviews Grid */}
-        <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-          {filteredReviews.map((rev) => (
-            <div key={rev.id} className="bg-white p-6 rounded-3xl border border-gray-200 shadow-md space-y-4 hover:shadow-lg transition">
-              <div className="flex justify-between items-start">
-                <div className="flex items-center gap-3">
-                  <div className={`w-11 h-11 rounded-full ${rev.bgColor} text-white font-black text-base flex items-center justify-center shadow-md`}>
-                    {rev.initials}
+        {/* 2026 Equal Height Reviews Grid */}
+        <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+          {filteredReviews.map((rev, idx) => (
+            <motion.div
+              key={rev.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              whileHover={{ y: -6 }}
+              className="bg-[#091f18]/90 border border-emerald-700/60 p-6 sm:p-7 rounded-3xl shadow-xl backdrop-blur-xl flex flex-col justify-between h-full group hover:border-amber-400/80 transition-all duration-300 space-y-4"
+            >
+              <div className="space-y-4 flex-1 flex flex-col justify-between">
+                
+                <div className="flex justify-between items-start">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-11 h-11 rounded-full ${rev.bgColor} text-white font-black text-base flex items-center justify-center shadow-md`}>
+                      {rev.initials}
+                    </div>
+                    <div>
+                      <h4 className="font-black text-sm sm:text-base text-amber-300 flex items-center gap-1.5 font-serif">
+                        <span>{rev.author}</span>
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400 fill-emerald-950" />
+                      </h4>
+                      <p className="text-[11px] text-emerald-300/70 font-semibold">{rev.date} • Verified Visit</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-black text-sm sm:text-base text-[#0f382c] flex items-center gap-1.5">
-                      <span>{rev.author}</span>
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600 fill-emerald-100" />
-                    </h4>
-                    <p className="text-[11px] text-gray-400 font-semibold">{rev.date} • Verified Visit</p>
+
+                  <div className="flex text-amber-400 bg-emerald-950 px-2.5 py-1 rounded-full border border-emerald-800">
+                    {[...Array(rev.rating)].map((_, i) => (
+                      <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
+                    ))}
                   </div>
                 </div>
 
-                <div className="flex text-amber-400 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">
-                  {[...Array(rev.rating)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
-                  ))}
-                </div>
+                <p className="text-xs sm:text-sm text-emerald-100/90 font-medium leading-relaxed italic">
+                  "{rev.comment}"
+                </p>
+
               </div>
 
-              <p className="text-xs sm:text-sm text-gray-700 font-medium leading-relaxed italic">
-                "{rev.comment}"
-              </p>
-
-              <div className="pt-3 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-400 font-semibold">
-                <span className="flex items-center gap-1 text-emerald-800 font-bold">
-                  <ShieldCheck className="w-3.5 h-3.5" /> Google Maps Review
+              <div className="pt-3 border-t border-emerald-800/80 flex items-center justify-between text-[11px] text-emerald-300 font-semibold mt-auto">
+                <span className="flex items-center gap-1 text-emerald-400 font-bold">
+                  <ShieldCheck className="w-3.5 h-3.5 text-amber-400" /> Google Maps Review
                 </span>
-                <span className="flex items-center gap-1 hover:text-gray-600 cursor-pointer">
-                  <ThumbsUp className="w-3 h-3" /> {rev.likes} Helpful
+                <span className="flex items-center gap-1 text-amber-300 font-bold">
+                  <ThumbsUp className="w-3.5 h-3.5" /> {rev.likes} Helpful
                 </span>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
