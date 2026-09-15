@@ -1,11 +1,16 @@
 // app/api/orders/[id]/route.ts
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
-import { sseClients } from '@/app/api/orders/route'
+import { sseClients, memoryOrders } from '@/app/api/orders/route'
 
 export async function GET(req: Request, context: { params: Promise<{ id: string }> }) {
   try {
     const { id } = await context.params
+    const memOrder = memoryOrders.find((o) => o.id === id || o.orderNumber === id)
+    if (memOrder) {
+      return NextResponse.json({ success: true, order: memOrder })
+    }
+
     const order = await prisma.order.findUnique({
       where: { id },
       include: {
@@ -33,6 +38,19 @@ export async function PATCH(req: Request, context: { params: Promise<{ id: strin
     const { id } = await context.params
     const body = await req.json()
     const { orderStatus, cancelReason, paymentStatus } = body
+
+    const memOrder = memoryOrders.find((o) => o.id === id || o.orderNumber === id)
+    if (memOrder) {
+      if (orderStatus) memOrder.orderStatus = orderStatus
+      if (cancelReason !== undefined) memOrder.cancelReason = cancelReason
+      if (paymentStatus) memOrder.paymentStatus = paymentStatus
+
+      sseClients.forEach((send) => {
+        send({ type: 'ORDER_UPDATED', order: memOrder })
+      })
+
+      return NextResponse.json({ success: true, order: memOrder })
+    }
 
     const updateData: any = {}
     if (orderStatus) updateData.orderStatus = orderStatus
