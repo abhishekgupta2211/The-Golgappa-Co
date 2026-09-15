@@ -95,6 +95,54 @@ export const translations = {
     asap: "ASAP (Within 15-20 Mins)",
     specialNotes: "Special Request / Notes",
     notesPlaceholder: "Any special request or event details?",
+
+    // Editorial About Page (EN)
+    aboutEyebrow: "OUR STORY",
+    aboutHeroTitle1: "20+ YEARS.",
+    aboutHeroTitle2: "ONE PLACE.",
+    aboutHeroTitle3: "ONE TASTE.",
+    aboutHeroSub1: "Some flavours come and go. Some become a part of people's lives.",
+    aboutHeroSub2: "For more than two decades, our Golgappe have been served from the same place, with the same passion for that perfect crispy bite.",
+    aboutBtnDiscover: "DISCOVER OUR STORY ↓",
+
+    aboutLegacyHeadline: "YEARS OF TASTE & TRUST",
+    aboutLegacySub: "ONE LOCATION • COUNTLESS MEMORIES",
+
+    aboutStartedTitle1: "IT STARTED WITH",
+    aboutStartedTitle2: "A SIMPLE IDEA.",
+    aboutStartedText1: "A Golgappa does not need to be complicated. It needs to be crispy. The masala needs to be right. The pani needs to have that unforgettable balance. And every plate needs to feel just as good as the last one.",
+    aboutStartedText2: "That simple belief has stayed with us for more than 20 years at our iconic stall location.",
+
+    aboutSamePlaceTitle1: "SAME PLACE.",
+    aboutSamePlaceTitle2: "SAME TASTE.",
+    aboutSamePlaceSub: "Years change. Streets change. Trends change. But some tastes become timeless.",
+
+    aboutSpecialHeadline1: "SIMPLE INGREDIENTS.",
+    aboutSpecialHeadline2: "SERIOUS CRAVINGS.",
+
+    aboutOwnerLabel: "THE PERSON BEHIND THE TASTE",
+    aboutOwnerTitle1: "BUILT WITH PASSION.",
+    aboutOwnerTitle2: "SERVED WITH PRIDE.",
+    aboutOwnerName: "Mahesh Kumar Gupta",
+    aboutOwnerRole: "Founder & Head Chef",
+    aboutOwnerBio: "Every afternoon since 2004, Mahesh Kumar Gupta personally selects the finest chickpeas, boils fresh potatoes, grinds aromatic roasted spices, and prepares 100% RO mineral water infused with fresh mint and tamarind. No artificial flavors, no compromises.",
+
+    aboutTimelineHeadline1: "MORE THAN TWO DECADES.",
+    aboutTimelineHeadline2: "ONE JOURNEY.",
+
+    aboutBeliefTitle: "WHAT WE BELIEVE IN.",
+
+    aboutTrustTitle1: "PEOPLE DON'T JUST",
+    aboutTrustTitle2: "COME BACK.",
+    aboutTrustTitle3: "THEY BRING OTHERS.",
+
+    aboutEvolvesTitle1: "THE TASTE STAYS.",
+    aboutEvolvesTitle2: "THE EXPERIENCE EVOLVES.",
+    aboutEvolvesSub: "The Golgappa hasn't changed. The way you book it has.",
+
+    aboutKnowStory1: "NOW YOU KNOW",
+    aboutKnowStory2: "THE STORY.",
+    aboutReadyTaste: "Ready to taste it?",
   },
   hi: {
     brandName: "द गोलगप्पा कंपनी",
@@ -187,6 +235,54 @@ export const translations = {
     asap: "तुरंत (15-20 मिनट में)",
     specialNotes: "विशेष अनुरोध / पार्टी डिटेल्स",
     notesPlaceholder: "कोई खास पसंद या कार्यक्रम की जानकारी?",
+
+    // Editorial About Page (HI)
+    aboutEyebrow: "हमारी कहानी",
+    aboutHeroTitle1: "20+ साल।",
+    aboutHeroTitle2: "एक स्थान।",
+    aboutHeroTitle3: "एक स्वाद।",
+    aboutHeroSub1: "कुछ स्वाद आते हैं और चले जाते हैं। कुछ लोगों की जिंदगी का हिस्सा बन जाते हैं।",
+    aboutHeroSub2: "दो दशकों से अधिक समय से, हमारे गोलगप्पे उसी स्थान से, उसी लगन और क्रिस्पी स्वाद के साथ परोसे जा रहे हैं।",
+    aboutBtnDiscover: "हमारी कहानी जानें ↓",
+
+    aboutLegacyHeadline: "स्वाद और विश्वास के 20+ साल",
+    aboutLegacySub: "एक ही स्थान • अनगिनत यादें",
+
+    aboutStartedTitle1: "इसकी शुरुआत हुई",
+    aboutStartedTitle2: "एक साधारण सोच से।",
+    aboutStartedText1: "गोलगप्पे को जटिल बनाने की ज़रूरत नहीं है। पूरी क्रिस्पी होनी चाहिए। मसाला सही होना चाहिए। पानी में वह यादगार संतुलन होना चाहिए। और हर प्लेट पिछली प्लेट जितनी ही बेहतरीन होनी चाहिए।",
+    aboutStartedText2: "यही साधारण विश्वास 20 से अधिक वर्षों से हमारी दुकान पर बना हुआ है।",
+
+    aboutSamePlaceTitle1: "वही स्थान।",
+    aboutSamePlaceTitle2: "वही स्वाद।",
+    aboutSamePlaceSub: "साल बदलते हैं, रास्ते बदलते हैं, ट्रेंड बदलते हैं। लेकिन कुछ स्वाद सदाबहार बन जाते हैं।",
+
+    aboutSpecialHeadline1: "साधारण सामग्री।",
+    aboutSpecialHeadline2: "अनूठा स्वाद।",
+
+    aboutOwnerLabel: "स्वाद के पीछे के इंसान",
+    aboutOwnerTitle1: "लगन से निर्मित।",
+    aboutOwnerTitle2: "गर्व से परोसा गया।",
+    aboutOwnerName: "महेश कुमार गुप्ता",
+    aboutOwnerRole: "संस्थापक व हेड शेफ",
+    aboutOwnerBio: "2004 से हर दोपहर, महेश कुमार गुप्ता जी स्वयं ताज़ा आलू उबालते हैं, भुने मसाले पीसते हैं और ताज़ा पुदीने व इमली के साथ 100% मिनरल वाटर पानी तैयार करते हैं।",
+
+    aboutTimelineHeadline1: "दो दशकों से अधिक।",
+    aboutTimelineHeadline2: "एक सफर।",
+
+    aboutBeliefTitle: "हमारा विश्वास।",
+
+    aboutTrustTitle1: "लोग सिर्फ़ खुद नहीं आते,",
+    aboutTrustTitle2: "वे अपनों को भी",
+    aboutTrustTitle3: "साथ लाते हैं।",
+
+    aboutEvolvesTitle1: "स्वाद वही है,",
+    aboutEvolvesTitle2: "अनुभव आधुनिक हो गया।",
+    aboutEvolvesSub: "गोलगप्पे का स्वाद नहीं बदला, बस उसे बुक करने का तरीका बदल गया।",
+
+    aboutKnowStory1: "अब आप जानते हैं",
+    aboutKnowStory2: "हमारी पूरी कहानी।",
+    aboutReadyTaste: "क्या आप इसे चखने के लिए तैयार हैं?",
   },
   bn: {
     brandName: "দ্যা গোলগাপ্পা কোং",
@@ -198,6 +294,7 @@ export const translations = {
     
     // Clean Editorial Nav Labels
     navHome: "হোম",
+    navAbout: "আমাদের কথা",
     navGolgappe: "গোলগাপ্পা",
     navPaani: "আমাদের জল",
     navStory: "আমাদের কথা",
@@ -279,5 +376,53 @@ export const translations = {
     asap: "যত দ্রুত সম্ভব (১৫-২০ মিনিট)",
     specialNotes: "বিশেষ অনুরোধ",
     notesPlaceholder: "কোন বিশেষ অনুরোধ বা অনুষ্ঠানের বিস্তারিত?",
+
+    // Editorial About Page (BN)
+    aboutEyebrow: "আমাদের কথা",
+    aboutHeroTitle1: "২০+ বছর।",
+    aboutHeroTitle2: "একটি স্থান।",
+    aboutHeroTitle3: "একটি স্বাদ।",
+    aboutHeroSub1: "কিছু স্বাদ আসে আর চলে যায়। কিছু স্বাদ মানুষের জীবনের অংশ হয়ে ওঠে।",
+    aboutHeroSub2: "দুই দশকেরও বেশি সময় ধরে, আমাদের ফুচকা একই স্থানে একই ভালোবাসায় পরিবেশন করা হচ্ছে।",
+    aboutBtnDiscover: "আমাদের গল্প পড়ুন ↓",
+
+    aboutLegacyHeadline: "স্বাদ ও বিশ্বাসের ২০+ বছর",
+    aboutLegacySub: "একটি স্থান • অসংখ্য স্মৃতি",
+
+    aboutStartedTitle1: "শুরু হয়েছিল",
+    aboutStartedTitle2: "একটি সহজ ভাবনা দিয়ে।",
+    aboutStartedText1: "ফুচকা জটিল হওয়ার প্রয়োজন নেই। পুরি হতে হবে মুচমুচে, মশলার স্বাদ হতে হবে পারফেক্ট এবং জলের টক-ঝাল হতে হবে অবিস্মরণীয়।",
+    aboutStartedText2: "সেই সহজ বিশ্বাস গত ২০ বছরেরও বেশি সময় ধরে আমাদের দোকানে বজায় রয়েছে।",
+
+    aboutSamePlaceTitle1: "একই জায়গা।",
+    aboutSamePlaceTitle2: "একই স্বাদ।",
+    aboutSamePlaceSub: "বছর বদলায়, শহর বদলায়। কিন্তু কিছু স্বাদ চিরন্তন রয়ে যায়।",
+
+    aboutSpecialHeadline1: "সহজ উপাদান।",
+    aboutSpecialHeadline2: "সেরা স্বাদ।",
+
+    aboutOwnerLabel: "স্বাদের কারিগর",
+    aboutOwnerTitle1: "ভালোবাসায় তৈরি।",
+    aboutOwnerTitle2: "গর্বের সাথে পরিবেশিত।",
+    aboutOwnerName: "মহেশ কুমার গুপ্তা",
+    aboutOwnerRole: "প্রতিষ্ঠাতা ও হেড শেফ",
+    aboutOwnerBio: "২০০৪ সাল থেকে প্রতিদিন মহেশ কুমার গুপ্তা নিজে আলু সিদ্ধ করেন, ভাজা মশলা তৈরি করেন এবং ১০০% মিনারেল জল দিয়ে খাঁটি পুদিনা জল প্রস্তুত করেন।",
+
+    aboutTimelineHeadline1: "দুই দশকেরও বেশি সময়।",
+    aboutTimelineHeadline2: "একটি যাত্রা।",
+
+    aboutBeliefTitle: "আমাদের বিশ্বাস।",
+
+    aboutTrustTitle1: "মানুষ শুধু একা আসে না,",
+    aboutTrustTitle2: "তারা প্রিয়জনদেরও",
+    aboutTrustTitle3: "সাথে নিয়ে আসে।",
+
+    aboutEvolvesTitle1: "স্বাদ একই থাকে,",
+    aboutEvolvesTitle2: "অভিজ্ঞতা আধুনিক হয়।",
+    aboutEvolvesSub: "ফুচকার স্বাদ বদলায়নি, বুক করার মাধ্যম আধুনিক হয়েছে।",
+
+    aboutKnowStory1: "এখন আপনি জানেন",
+    aboutKnowStory2: "আমাদের সম্পূর্ণ গল্প।",
+    aboutReadyTaste: "আপনি কি স্বাদ নিতে প্রস্তুত?",
   }
 };
