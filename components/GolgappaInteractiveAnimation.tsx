@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, CheckCircle2, ChevronRight, Droplets, Flame, Cookie, Utensils } from "lucide-react";
+import { Sparkles, CheckCircle2, ChevronRight } from "lucide-react";
 
 export function GolgappaInteractiveAnimation() {
   const [activeStep, setActiveStep] = useState(0);
@@ -17,7 +17,6 @@ export function GolgappaInteractiveAnimation() {
       icon: "🧆",
       badge: "Pure Golden Gold",
       img: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80",
-      accent: "from-amber-500 to-yellow-400",
     },
     {
       id: "masala",
@@ -28,7 +27,6 @@ export function GolgappaInteractiveAnimation() {
       icon: "🥔",
       badge: "Authentic Street Spices",
       img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80",
-      accent: "from-yellow-500 to-amber-600",
     },
     {
       id: "paani",
@@ -39,7 +37,6 @@ export function GolgappaInteractiveAnimation() {
       icon: "🌿",
       badge: "Teekha Pudina Burst",
       img: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80",
-      accent: "from-emerald-500 to-teal-400",
     },
     {
       id: "bite",
@@ -50,16 +47,12 @@ export function GolgappaInteractiveAnimation() {
       icon: "💥",
       badge: "Pure Foodie Bliss",
       img: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80",
-      accent: "from-red-500 to-amber-500",
     },
   ];
 
   return (
-    <section className="py-24 sm:py-32 w-full bg-[#020705] text-white relative overflow-hidden border-t border-b border-emerald-900/40">
+    <section className="py-24 sm:py-32 w-full bg-[#f4efe6] text-gray-900 relative overflow-hidden border-t border-b border-emerald-900/10">
       
-      {/* Background Glowing Ambient Light */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] bg-emerald-600/10 rounded-full blur-[140px] pointer-events-none" />
-
       <div className="w-full px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto relative z-10 space-y-16">
         
         {/* Section Header */}
@@ -68,22 +61,22 @@ export function GolgappaInteractiveAnimation() {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 bg-[#091f18] border border-amber-400/40 px-4 py-1.5 rounded-full text-amber-300 text-xs font-black uppercase tracking-wider"
+            className="inline-flex items-center gap-2 bg-emerald-900 text-amber-300 border border-emerald-800 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider"
           >
             <Sparkles className="w-4 h-4 text-amber-400" />
-            <span>2026 INTERACTIVE GOLGAPPA CRAFTING RITUAL</span>
+            <span>INTERACTIVE GOLGAPPA CRAFTING RITUAL</span>
           </motion.div>
 
-          <h2 className="text-4xl sm:text-6xl font-black font-serif uppercase tracking-tight text-[#fffdf7]">
+          <h2 className="text-4xl sm:text-6xl font-black font-serif uppercase tracking-tight text-[#0f382c]">
             How The Perfect Bite Is Born
           </h2>
-          <p className="text-emerald-200/90 font-medium text-base sm:text-lg">
+          <p className="text-gray-600 font-medium text-base sm:text-lg">
             Click through the 4 stages below to experience the preparation art of Mahesh Kumar Gupta!
           </p>
         </div>
 
-        {/* 2026 Interactive Interactive Tab Container - Full Width max-w-7xl */}
-        <div className="w-full max-w-7xl mx-auto bg-[#091f18]/90 border-2 border-amber-400/40 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-2xl space-y-8">
+        {/* Light Theme Interactive Tab Container */}
+        <div className="w-full max-w-7xl mx-auto bg-white border-2 border-emerald-900/10 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-8">
           
           {/* Step Selector Buttons */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -93,8 +86,8 @@ export function GolgappaInteractiveAnimation() {
                 onClick={() => setActiveStep(idx)}
                 className={`p-4 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden ${
                   activeStep === idx
-                    ? "bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-500 text-emerald-950 border-amber-300 font-black shadow-xl scale-105"
-                    : "bg-[#040f0c] border-emerald-800 text-emerald-200 hover:bg-[#071713]"
+                    ? "bg-[#0f382c] text-amber-300 border-emerald-900 font-black shadow-xl scale-105"
+                    : "bg-[#faf7f2] border-gray-200 text-gray-700 hover:bg-emerald-50"
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -114,45 +107,45 @@ export function GolgappaInteractiveAnimation() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 1.05, y: -20 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-[#040f0c] p-6 sm:p-8 rounded-2xl border border-emerald-700/60"
+              className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-[#faf7f2] p-6 sm:p-8 rounded-2xl border border-gray-200"
             >
               
               {/* Image Box */}
-              <div className="md:col-span-5 relative h-64 sm:h-72 rounded-2xl overflow-hidden border-2 border-amber-400/40 shadow-xl group">
+              <div className="md:col-span-5 relative h-64 sm:h-72 rounded-2xl overflow-hidden border-2 border-emerald-900/10 shadow-lg group">
                 <img
                   src={steps[activeStep].img}
                   alt={steps[activeStep].title}
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 
-                <div className="absolute top-3 left-3 bg-[#091f18]/90 text-amber-300 font-black text-xs px-3.5 py-1 rounded-full border border-amber-400/50 shadow-md">
+                <div className="absolute top-3 left-3 bg-[#0f382c] text-amber-300 font-black text-xs px-3.5 py-1 rounded-full shadow-md">
                   {steps[activeStep].badge}
                 </div>
               </div>
 
               {/* Text Description */}
               <div className="md:col-span-7 space-y-4 text-left">
-                <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-widest block">
+                <span className="text-xs font-mono font-bold text-amber-700 uppercase tracking-widest block">
                   STAGE 0{activeStep + 1} OF 04 • {steps[activeStep].sub}
                 </span>
 
-                <h3 className="text-2xl sm:text-4xl font-black font-serif uppercase text-amber-300">
+                <h3 className="text-2xl sm:text-4xl font-black font-serif uppercase text-[#0f382c]">
                   {steps[activeStep].title}
                 </h3>
 
-                <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed font-medium">
+                <p className="text-sm sm:text-base text-gray-700 leading-relaxed font-medium">
                   {steps[activeStep].desc}
                 </p>
 
-                <div className="pt-2 flex items-center justify-between border-t border-emerald-900 text-xs">
-                  <span className="flex items-center gap-1.5 text-emerald-400 font-bold">
-                    <CheckCircle2 className="w-4 h-4 text-amber-400" /> 100% Authentic Preparation
+                <div className="pt-2 flex items-center justify-between border-t border-gray-200 text-xs">
+                  <span className="flex items-center gap-1.5 text-emerald-800 font-bold">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600" /> 100% Authentic Preparation
                   </span>
 
                   <button
                     onClick={() => setActiveStep((prev) => (prev + 1) % steps.length)}
-                    className="text-amber-300 hover:text-white font-extrabold flex items-center gap-1 transition uppercase"
+                    className="text-emerald-900 hover:text-amber-700 font-extrabold flex items-center gap-1 transition uppercase"
                   >
                     <span>NEXT STAGE</span>
                     <ChevronRight className="w-4 h-4" />

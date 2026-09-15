@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/components/LanguageContext";
-import { Plus, Flame, Sparkles, CheckCircle2, ShoppingBag } from "lucide-react";
+import { Plus, Flame, Sparkles, CheckCircle2 } from "lucide-react";
 
 export interface Product {
   id: string;
@@ -27,12 +27,9 @@ export function MenuSection({
   const { t } = useLanguage();
 
   return (
-    <section id="menu" className="py-24 w-full bg-[#030907] text-white border-t border-emerald-900/40 relative overflow-hidden">
+    <section id="menu" className="py-24 w-full bg-[#faf7f2] text-gray-900 border-t border-emerald-900/10 relative overflow-hidden">
       
-      {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-emerald-600/10 rounded-full blur-[140px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10 space-y-16">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -40,21 +37,21 @@ export function MenuSection({
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 bg-[#091f18] border border-amber-400/40 px-4 py-1.5 rounded-full text-amber-300 text-xs font-black uppercase tracking-wider"
+            className="inline-flex items-center gap-2 bg-emerald-900 text-amber-300 border border-emerald-800 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider"
           >
             <Sparkles className="w-4 h-4 text-amber-400" />
-            <span>2026 SIGNATURE STREET FOOD MENU</span>
+            <span>SIGNATURE STREET FOOD MENU</span>
           </motion.div>
 
-          <h2 className="text-4xl sm:text-6xl font-black font-serif uppercase tracking-tight text-[#fffdf7]">
+          <h2 className="text-4xl sm:text-6xl font-black font-serif uppercase tracking-tight text-[#0f382c]">
             {t.menuTitle}
           </h2>
-          <p className="text-emerald-200/80 font-medium text-base sm:text-lg">
+          <p className="text-gray-600 font-medium text-base sm:text-lg">
             {t.menuSub}
           </p>
         </div>
 
-        {/* 2026 Ultra-Modern Product Grid with Equal Card Heights & Strict Alignment */}
+        {/* Light Theme Equal Height Product Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {products.map((prod, idx) => {
             const countInCart = cart[prod.id] || 0;
@@ -67,7 +64,7 @@ export function MenuSection({
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 whileHover={{ y: -8 }}
-                className="bg-[#091f18]/90 border border-emerald-700/60 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-xl flex flex-col justify-between h-full group hover:border-amber-400/80 transition-all duration-300"
+                className="bg-white border-2 border-emerald-900/10 rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between h-full group hover:shadow-2xl hover:border-emerald-800 transition-all duration-300"
               >
                 <div className="flex flex-col flex-1">
                   {/* Product Image & Badges */}
@@ -75,18 +72,18 @@ export function MenuSection({
                     <img
                       src={prod.image}
                       alt={prod.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                      className="w-full h-full object-cover group-hover:scale-105 transition duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#091f18] via-transparent to-transparent opacity-90" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
                     
                     {/* Price Tag */}
-                    <div className="absolute top-4 right-4 bg-amber-400 text-emerald-950 font-black text-sm px-4 py-1.5 rounded-full shadow-lg border border-white/40">
+                    <div className="absolute top-4 right-4 bg-[#0f382c] text-amber-300 font-black text-sm px-4 py-1.5 rounded-full shadow-lg border border-amber-400/40">
                       ₹{prod.price}
                     </div>
 
                     {/* Spice Level */}
-                    <div className="absolute bottom-4 left-4 bg-[#030907]/90 text-amber-300 font-bold text-xs px-3.5 py-1.5 rounded-full border border-amber-400/40 flex items-center gap-1.5 backdrop-blur-md">
-                      <Flame className="w-3.5 h-3.5 text-red-400 fill-red-400" />
+                    <div className="absolute bottom-4 left-4 bg-white/95 text-emerald-950 font-bold text-xs px-3.5 py-1.5 rounded-full border border-emerald-900/20 flex items-center gap-1.5 backdrop-blur-md">
+                      <Flame className="w-3.5 h-3.5 text-amber-600 fill-amber-600" />
                       <span>{prod.spiceLevel}</span>
                     </div>
                   </div>
@@ -94,10 +91,10 @@ export function MenuSection({
                   {/* Title & Desc */}
                   <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
                     <div>
-                      <h3 className="text-2xl font-black font-serif text-amber-300 group-hover:text-amber-200 transition">
+                      <h3 className="text-2xl font-black font-serif text-[#0f382c]">
                         {prod.name}
                       </h3>
-                      <p className="text-xs sm:text-sm text-emerald-100/80 font-medium leading-relaxed mt-2">
+                      <p className="text-xs sm:text-sm text-gray-600 font-medium leading-relaxed mt-2">
                         {prod.description}
                       </p>
                     </div>
@@ -110,8 +107,8 @@ export function MenuSection({
                     onClick={() => onAddToCart(prod)}
                     className={`w-full py-3.5 rounded-2xl font-black text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 shadow-lg ${
                       countInCart > 0
-                        ? "bg-gradient-to-r from-emerald-500 to-teal-400 text-emerald-950 shadow-emerald-500/20"
-                        : "bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-500 hover:from-amber-300 text-emerald-950"
+                        ? "bg-emerald-900 text-amber-300 shadow-emerald-900/20"
+                        : "bg-amber-400 hover:bg-amber-300 text-emerald-950"
                     }`}
                   >
                     {countInCart > 0 ? (
