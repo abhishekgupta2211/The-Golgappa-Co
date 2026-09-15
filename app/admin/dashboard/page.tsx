@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
-import { Bell, CheckCircle, XCircle, Clock, ShoppingBag, DollarSign, Filter, RefreshCw, Volume2, Power, Store } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { Bell, CheckCircle, XCircle, Clock, ShoppingBag, DollarSign, Filter, RefreshCw, Volume2, Power, Store, LogOut, UserCheck, MessageSquareShare } from "lucide-react";
 import Link from "next/link";
 
 export default function AdminDashboardPage() {
+  const router = useRouter();
   const [orders, setOrders] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedFilter, setSelectedFilter] = useState("ALL");
@@ -97,6 +99,30 @@ export default function AdminDashboardPage() {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/admin/logout", { method: "POST" });
+      router.push("/admin/login");
+    } catch (err) {
+      console.error("Logout failed", err);
+    }
+  };
+
+  // Helper to open WhatsApp alert directly to Owner Number 9369610213
+  const sendWhatsAppNotification = (ord: any) => {
+    const text = `🚨 *NEW GOLGAPPA ORDER!*%0A%0A` +
+      `*Order ID:* ${ord.orderNumber}%0A` +
+      `*Customer Name:* ${ord.customerName}%0A` +
+      `*Customer Phone:* ${ord.customerPhone}%0A` +
+      `*Pickup Time:* ${ord.pickupTime}%0A` +
+      `*Total Amount:* ₹${ord.total}%0A` +
+      `*Payment:* Pay at Stall (UNPAID)%0A%0A` +
+      `*Items:*%0A` +
+      ord.items.map((i: any) => `• ${i.product?.name || i.name || 'Item'} × ${i.quantity}`).join('%0A');
+    
+    window.open(`https://wa.me/919369610213?text=${text}`, '_blank');
+  };
+
   // Metrics calculation
   const totalOrders = orders.length;
   const newOrdersCount = orders.filter((o) => o.orderStatus === "NEW").length;
@@ -111,29 +137,43 @@ export default function AdminDashboardPage() {
     <div className="min-h-screen bg-gray-50 text-gray-900 font-sans flex flex-col">
       
       {/* Top Admin Header */}
-      <header className="bg-[#0f382c] text-white py-4 px-6 shadow-md flex items-center justify-between">
+      <header className="bg-[#0f382c] text-white py-4 px-6 shadow-md flex items-center justify-between flex-wrap gap-4">
+        
+        {/* Owner Details Profile */}
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-amber-400 text-emerald-950 flex items-center justify-center font-black text-xl">
-            🧆
+          <div className="w-12 h-12 rounded-full bg-amber-400 text-emerald-950 flex items-center justify-center font-black text-2xl border-2 border-amber-300">
+            👨‍🍳
           </div>
           <div>
-            <h1 className="font-extrabold text-lg text-amber-300">Owner Dashboard</h1>
-            <p className="text-xs text-emerald-200">THE GOLGAPPA CO. • Real-time Live Order Console</p>
+            <div className="flex items-center gap-2">
+              <h1 className="font-extrabold text-lg text-amber-300">Mahesh Kumar Gupta</h1>
+              <span className="bg-emerald-900 text-amber-300 text-[10px] font-black px-2 py-0.5 rounded-full border border-amber-400/40">OWNER ADMIN</span>
+            </div>
+            <p className="text-xs text-emerald-200">THE GOLGAPPA CO. • WhatsApp Alerts: <strong>9369610213</strong></p>
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
-          {/* Real-time shop status toggle */}
+        {/* Action Controls: Shop Toggle & Logout */}
+        <div className="flex items-center gap-3">
           <button
             onClick={toggleShopStatus}
-            className={`px-4 py-2 rounded-xl text-xs font-black flex items-center gap-2 transition ${
-              isShopOpen ? "bg-emerald-600 text-white" : "bg-red-600 text-white"
+            className={`px-4 py-2 rounded-xl text-xs font-black flex items-center gap-2 transition shadow-md ${
+              isShopOpen ? "bg-emerald-600 text-white" : "bg-red-600 text-white animate-pulse"
             }`}
           >
             <Power className="w-4 h-4" />
             <span>{isShopOpen ? "SHOP OPEN 🟢" : "SHOP CLOSED 🔴"}</span>
           </button>
+
+          <button
+            onClick={handleLogout}
+            className="px-4 py-2 bg-red-800/80 hover:bg-red-700 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 transition shadow-md"
+          >
+            <LogOut className="w-4 h-4" />
+            <span>LOGOUT</span>
+          </button>
         </div>
+
       </header>
 
       {/* Main Admin Console Container */}
@@ -151,12 +191,21 @@ export default function AdminDashboardPage() {
                 </p>
               </div>
             </div>
-            <button
-              onClick={() => setNewOrderAlert(null)}
-              className="bg-emerald-950 text-white px-4 py-1.5 rounded-xl font-bold text-xs"
-            >
-              DISMISS
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => sendWhatsAppNotification(newOrderAlert)}
+                className="bg-emerald-950 hover:bg-emerald-900 text-amber-300 px-3 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1"
+              >
+                <MessageSquareShare className="w-4 h-4" />
+                <span>Send WhatsApp</span>
+              </button>
+              <button
+                onClick={() => setNewOrderAlert(null)}
+                className="bg-emerald-950 text-white px-3 py-1.5 rounded-xl font-bold text-xs"
+              >
+                DISMISS
+              </button>
+            </div>
           </div>
         )}
 
@@ -182,7 +231,7 @@ export default function AdminDashboardPage() {
             <p className="text-xs font-bold text-gray-600 uppercase">⚫ Completed</p>
             <p className="text-2xl font-black text-gray-800">{completedCount}</p>
           </div>
-          <div className="bg-emerald-900 text-white p-4 rounded-2xl shadow-md">
+          <div className="bg-[#0f382c] text-white p-4 rounded-2xl shadow-md">
             <p className="text-xs font-bold text-emerald-300 uppercase">Total Sales</p>
             <p className="text-2xl font-black text-amber-300 font-mono">₹{totalRevenue}</p>
           </div>
@@ -242,7 +291,7 @@ export default function AdminDashboardPage() {
                     <div className="bg-gray-50 p-3 rounded-xl space-y-1">
                       {ord.items.map((item: any) => (
                         <div key={item.id} className="flex justify-between font-bold text-gray-800">
-                          <span>{item.product?.name} × {item.quantity}</span>
+                          <span>{item.product?.name || item.name} × {item.quantity}</span>
                           <span className="font-mono">₹{item.totalPrice}</span>
                         </div>
                       ))}
@@ -259,6 +308,15 @@ export default function AdminDashboardPage() {
                     <span>Total:</span>
                     <span className="text-xl font-mono text-emerald-800">₹{ord.total}</span>
                   </div>
+
+                  {/* WhatsApp Alert Trigger Button per Order */}
+                  <button
+                    onClick={() => sendWhatsAppNotification(ord)}
+                    className="w-full bg-emerald-800 hover:bg-emerald-900 text-white py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5"
+                  >
+                    <MessageSquareShare className="w-4 h-4 text-amber-300" />
+                    <span>Send Order Alert to WhatsApp (9369610213)</span>
+                  </button>
 
                   {/* Status update triggers */}
                   <div className="grid grid-cols-2 gap-2">
