@@ -5,9 +5,6 @@ import bcrypt from 'bcryptjs'
 const prisma = new PrismaClient()
 
 async function main() {
-  console.log('Seeding Golgappa Shop Database...')
-
-  // Seed Admin User
   const hashedPassword = await bcrypt.hash('admin123', 10)
   await prisma.user.upsert({
     where: { username: 'admin' },
@@ -20,22 +17,9 @@ async function main() {
     },
   })
 
-  // Seed Shop Settings
   await prisma.shopSettings.upsert({
     where: { id: 'default' },
-    update: {
-      shopName: 'THE GOLGAPPA CO.',
-      tagline: 'Crispy. Chatpata. Addictive.',
-      phone: '9876543210',
-      whatsapp: '9876543210',
-      address: 'Main Market Street, Near Central Park',
-      googleMapsUrl: 'https://maps.app.goo.gl/jm4LXsy1NSKZ38P17?g_st=aw',
-      isOpen: true,
-      openingTime: '03:00 PM',
-      closingTime: '10:00 PM',
-      slotDurationMinutes: 15,
-      maxOrdersPerSlot: 10,
-    },
+    update: {},
     create: {
       id: 'default',
       shopName: 'THE GOLGAPPA CO.',
@@ -52,7 +36,6 @@ async function main() {
     },
   })
 
-  // Seed Products
   const products = [
     {
       name: 'Classic Golgappa (6 Pcs)',
@@ -108,7 +91,6 @@ async function main() {
     }
   }
 
-  // Seed AddOns
   const addOns = [
     { name: 'Extra Mint Teekha Paani (250ml)', description: 'Chilled signature pudina paani', price: 15, available: true },
     { name: 'Extra Imli Sweet Paani (250ml)', description: 'Tangy tamarind date syrup paani', price: 15, available: true },
@@ -122,8 +104,6 @@ async function main() {
       await prisma.addOn.create({ data: addon })
     }
   }
-
-  console.log('Database seeded successfully!')
 }
 
 main()
