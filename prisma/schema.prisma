@@ -26,7 +26,7 @@ model Product {
   image       String
   price       Float
   available   Boolean     @default(true)
-  spiceLevel  String      @default("Medium") // Mild, Medium, Spicy, Extra Spicy
+  spiceLevel  String      @default("Medium")
   sortOrder   Int         @default(0)
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
@@ -46,7 +46,7 @@ model AddOn {
 
 model Order {
   id             String      @id @default(cuid())
-  orderNumber    String      @unique // e.g. GP-20260915-001
+  orderNumber    String      @unique
   customerName   String
   customerPhone  String
   pickupDate     String
@@ -54,8 +54,8 @@ model Order {
   subtotal       Float
   total          Float
   paymentMethod  String      @default("PAY_AT_STALL")
-  paymentStatus  String      @default("UNPAID") // UNPAID, PAID
-  orderStatus    String      @default("NEW") // NEW, ACCEPTED, PREPARING, READY, COMPLETED, CANCELLED
+  paymentStatus  String      @default("UNPAID")
+  orderStatus    String      @default("NEW")
   notes          String?
   cancelReason   String?
   createdAt      DateTime    @default(now())
@@ -92,7 +92,7 @@ model ShopSettings {
   tagline              String   @default("Crispy. Chatpata. Addictive.")
   phone                String   @default("9876543210")
   whatsapp             String   @default("9876543210")
-  address              String   @default("Main Market Street, Gourmet Hub")
+  address              String   @default("Main Market Street, Near Central Park")
   googleMapsUrl        String   @default("https://maps.app.goo.gl/jm4LXsy1NSKZ38P17?g_st=aw")
   isOpen               Boolean  @default(true)
   openingTime          String   @default("03:00 PM")
@@ -104,7 +104,7 @@ model ShopSettings {
 
 model PickupSlot {
   id          String   @id @default(cuid())
-  timeLabel   String   // e.g. "05:00 PM"
+  timeLabel   String
   maxCapacity Int      @default(10)
   isActive    Boolean  @default(true)
 }
