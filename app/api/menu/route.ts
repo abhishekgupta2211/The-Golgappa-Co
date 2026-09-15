@@ -3,59 +3,61 @@ import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { verifySession } from '@/lib/auth'
 
+const GOLGAPPA_IMG = 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80'
+
 const defaultProducts = [
   {
     id: 'prod-1',
-    name: 'Classic Golgappa (6 Pcs)',
-    description: 'Golden crispy puris filled with spiced potato-chana masala and iconic mint-coriander teekha paani.',
-    image: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80',
-    price: 50,
-    spiceLevel: 'Medium',
+    name: 'Classic Teekha Golgappa (6 Pcs)',
+    description: 'Golden crunchy puri loaded with spiced chickpea-potato mash and chilled spicy mint pudina paani.',
+    image: GOLGAPPA_IMG,
+    price: 40,
+    spiceLevel: 'Spicy',
     available: true,
   },
   {
     id: 'prod-2',
-    name: 'Teekha Volcano Golgappa (6 Pcs)',
-    description: 'Extra fiery green chillies and double spiced masaledar paani for true street food thrill seekers.',
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80',
-    price: 60,
-    spiceLevel: 'Extra Spicy',
-    available: true,
-  },
-  {
-    id: 'prod-3',
-    name: 'Khatta-Meetha Imli Special (6 Pcs)',
-    description: 'Sweet and sour tamarind chutney with soft boiled chickpea mash and roasted cumin powder.',
-    image: 'https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=800&q=80',
-    price: 55,
+    name: 'Khatta-Meetha Imli Golgappa (6 Pcs)',
+    description: 'Tangy tamarind & date paani with soft boiled mash and roasted cumin aromatic spices.',
+    image: GOLGAPPA_IMG,
+    price: 45,
     spiceLevel: 'Mild',
     available: true,
   },
   {
+    id: 'prod-3',
+    name: 'Dahi Puri Chatpata Special (6 Pcs)',
+    description: 'Crispy puris overflowing with thick chilled yogurt, sweet dates chutney, spicy garlic chutney & nylon sev.',
+    image: GOLGAPPA_IMG,
+    price: 70,
+    spiceLevel: 'Medium',
+    available: true,
+  },
+  {
     id: 'prod-4',
-    name: 'Dahi Puri Chatpata Delight (6 Pcs)',
-    description: 'Stuffed puris loaded with thick chilled yogurt, sweet chutney, spicy garlic chutney & fine nylon sev.',
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80',
-    price: 80,
+    name: 'Cheese & Garlic Butter Golgappa (6 Pcs)',
+    description: 'Modern fusion crispy puris topped with melted cheese, garlic butter infusion and green herbs.',
+    image: GOLGAPPA_IMG,
+    price: 90,
     spiceLevel: 'Medium',
     available: true,
   },
   {
     id: 'prod-5',
-    name: 'Special Mix Fusion Platter (8 Pcs)',
-    description: 'A feast of 2 classic, 2 teekha, 2 khatta-meetha, and 2 dahi puras crafted by Mahesh Ji.',
-    image: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80',
-    price: 110,
-    spiceLevel: 'Spicy',
+    name: 'Bulk Party / Catering Order (50+ Plates)',
+    description: 'Book live Golgappa stalls & bulk orders for weddings, birthdays, anniversaries & all auspicious occasions.',
+    image: GOLGAPPA_IMG,
+    price: 1999,
+    spiceLevel: 'Customizable',
     available: true,
   },
 ]
 
 const defaultAddOns = [
-  { id: 'addon-1', name: 'Extra Mint Teekha Paani (250ml)', description: 'Chilled signature pudina paani', price: 15, available: true },
-  { id: 'addon-2', name: 'Extra Imli Sweet Paani (250ml)', description: 'Tangy tamarind date syrup paani', price: 15, available: true },
-  { id: 'addon-3', name: 'Crispy Extra Puris (5 Pcs)', description: 'Freshly fried crunchy puris', price: 20, available: true },
-  { id: 'addon-4', name: 'Extra Nylon Sev & Boondi', description: 'Crunchy topping pack', price: 10, available: true },
+  { id: 'addon-1', name: 'Extra Pudina Teekha Paani (500ml)', description: 'Chilled signature pudina paani bottle', price: 25, available: true },
+  { id: 'addon-2', name: 'Extra Imli Meetha Paani (500ml)', description: 'Tangy tamarind date syrup paani bottle', price: 25, available: true },
+  { id: 'addon-3', name: 'Extra Crunchy Puris Pack (10 Pcs)', description: 'Freshly fried crunchy puris', price: 30, available: true },
+  { id: 'addon-4', name: 'Extra Nylon Sev & Crunchy Boondi', description: 'Special topping pouch', price: 15, available: true },
 ]
 
 export async function GET() {
@@ -96,7 +98,7 @@ export async function POST(req: Request) {
       data: {
         name: body.name,
         description: body.description,
-        image: body.image || 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80',
+        image: body.image || GOLGAPPA_IMG,
         price: parseFloat(body.price),
         spiceLevel: body.spiceLevel || 'Medium',
         available: body.available ?? true,

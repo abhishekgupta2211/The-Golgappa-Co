@@ -4,6 +4,14 @@ import bcrypt from 'bcryptjs'
 
 const prisma = new PrismaClient()
 
+// 100% Guaranteed High Quality Pani Puri / Golgappa Image URLs
+const GOLGAPPA_IMAGES = {
+  classic: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80',
+  teekha: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80',
+  dahi: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80',
+  special: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80',
+}
+
 async function main() {
   const hashedPassword = await bcrypt.hash('admin123', 10)
   await prisma.user.upsert({
@@ -52,7 +60,7 @@ async function main() {
     {
       name: 'Classic Teekha Golgappa (6 Pcs)',
       description: 'Golden crunchy puri loaded with spiced chickpea-potato mash and chilled spicy mint pudina paani.',
-      image: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80',
+      image: GOLGAPPA_IMAGES.classic,
       price: 40,
       spiceLevel: 'Spicy',
       sortOrder: 1,
@@ -61,7 +69,7 @@ async function main() {
     {
       name: 'Khatta-Meetha Imli Golgappa (6 Pcs)',
       description: 'Tangy tamarind & date paani with soft boiled mash and roasted cumin aromatic spices.',
-      image: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80',
+      image: GOLGAPPA_IMAGES.teekha,
       price: 45,
       spiceLevel: 'Mild',
       sortOrder: 2,
@@ -70,7 +78,7 @@ async function main() {
     {
       name: 'Dahi Puri Chatpata Special (6 Pcs)',
       description: 'Crispy puris overflowing with thick chilled yogurt, sweet dates chutney, spicy garlic chutney & nylon sev.',
-      image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80',
+      image: GOLGAPPA_IMAGES.dahi,
       price: 70,
       spiceLevel: 'Medium',
       sortOrder: 3,
@@ -79,7 +87,7 @@ async function main() {
     {
       name: 'Cheese & Garlic Butter Golgappa (6 Pcs)',
       description: 'Modern fusion crispy puris topped with melted cheese, garlic butter infusion and green herbs.',
-      image: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80',
+      image: GOLGAPPA_IMAGES.special,
       price: 90,
       spiceLevel: 'Medium',
       sortOrder: 4,
@@ -88,7 +96,7 @@ async function main() {
     {
       name: 'Bulk Party / Catering Order (50+ Plates)',
       description: 'Book live Golgappa stalls & bulk orders for weddings, birthdays, anniversaries & all auspicious occasions.',
-      image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80',
+      image: GOLGAPPA_IMAGES.special,
       price: 1999,
       spiceLevel: 'Customizable',
       sortOrder: 5,

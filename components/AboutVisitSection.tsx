@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useLanguage } from "@/components/LanguageContext";
-import { Award, ShieldCheck, Sparkles, MapPin, Phone, Clock } from "lucide-react";
+import { MapPin, Phone, Clock } from "lucide-react";
 
 export function AboutVisitSection() {
   const { t } = useLanguage();
@@ -34,15 +34,15 @@ export function AboutVisitSection() {
                 </div>
                 <div>
                   <h4 className="font-bold text-amber-300 text-lg">{t.ownerName}</h4>
-                  <p className="text-xs text-emerald-300 font-semibold">Founder & Head Chef • Established 2004</p>
+                  <p className="text-xs text-emerald-300 font-semibold">Founder & Head Chef • Phone: 9369610213</p>
                 </div>
               </div>
             </div>
 
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-amber-400/20">
               <img
-                src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=80"
-                alt="Golgappa Street Food Prep"
+                src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=1000&q=80"
+                alt="Pure Golgappa Street Food Prep"
                 className="w-full h-auto object-cover"
               />
             </div>
@@ -74,11 +74,11 @@ export function AboutVisitSection() {
                 <div className="space-y-4 text-sm font-medium text-emerald-100">
                   <div className="flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
-                    <span>Main Market Street, Near Central Park, Food Street</span>
+                    <span>Near Central Park, Main Market Street</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Phone className="w-5 h-5 text-amber-400 shrink-0" />
-                    <span>+91 9876543210</span>
+                    <span>+91 9369610213</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Clock className="w-5 h-5 text-amber-400 shrink-0" />
