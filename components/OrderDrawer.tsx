@@ -37,13 +37,31 @@ export function OrderDrawer({
   const [notes, setNotes] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
-  // Confirmed Order result
-  const [createdOrder, setCreatedOrder] = useState<any>(null);
+  // Fallback Menu Fetching if products prop is empty
+  const [internalProducts, setInternalProducts] = useState<Product[]>([]);
+  const [internalAddOns, setInternalAddOns] = useState<any[]>([]);
+
+  React.useEffect(() => {
+    if ((!products || products.length === 0) && isOpen) {
+      fetch("/api/menu")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            setInternalProducts(data.products || []);
+            setInternalAddOns(data.addOns || []);
+          }
+        })
+        .catch((err) => console.error("Drawer menu fetch error:", err));
+    }
+  }, [products, isOpen]);
 
   if (!isOpen) return null;
 
+  const displayProducts = (products && products.length > 0) ? products : internalProducts;
+  const displayAddOns = (addOnsList && addOnsList.length > 0) ? addOnsList : internalAddOns;
+
   const cartItemIds = Object.keys(cart).filter((id) => cart[id] > 0);
-  const selectedProducts = products.filter((p) => cartItemIds.includes(p.id));
+  const selectedProducts = displayProducts.filter((p) => cartItemIds.includes(p.id));
 
   // Calculate Subtotal & Total EXACTLY from cart state
   let itemsSubtotal = 0;
@@ -53,7 +71,7 @@ export function OrderDrawer({
 
   let addOnsSubtotal = 0;
   selectedAddOns.forEach((addOnId) => {
-    const addon = addOnsList.find((a) => a.id === addOnId);
+    const addon = displayAddOns.find((a) => a.id === addOnId);
     if (addon) addOnsSubtotal += addon.price;
   });
 
@@ -172,7 +190,7 @@ export function OrderDrawer({
           {step === 1 && (
             <div className="space-y-4">
               <h4 className="font-bold text-gray-800 text-sm uppercase tracking-wider">Select Golgappa Plates</h4>
-              {products.map((prod) => {
+              {displayProducts.map((prod) => {
                 const qty = cart[prod.id] || 0;
                 return (
                   <div key={prod.id} className="flex items-center justify-between p-4 bg-white rounded-2xl border border-gray-200 shadow-xs">
@@ -243,7 +261,7 @@ export function OrderDrawer({
               <div>
                 <label className="block font-bold text-sm text-[#0f382c] mb-2">{t.addOns}</label>
                 <div className="space-y-2">
-                  {addOnsList.map((addon) => {
+                  {displayAddOns.map((addon) => {
                     const isChecked = selectedAddOns.includes(addon.id);
                     return (
                       <button

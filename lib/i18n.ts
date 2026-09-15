@@ -13,6 +13,7 @@ export const translations = {
     
     // Clean Editorial Nav Labels
     navHome: "Home",
+    navAbout: "About",
     navGolgappe: "Golgappe",
     navPaani: "Our Paani",
     navStory: "Our Story",

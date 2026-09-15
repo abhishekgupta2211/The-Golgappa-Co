@@ -32,14 +32,14 @@ export function Navbar({ onOpenOrderModal, cartCount }: { onOpenOrderModal: () =
 
           {/* Clean Short Navbar Links */}
           <div className="hidden lg:flex items-center gap-7 font-bold text-xs uppercase tracking-wider text-emerald-100">
-            <Link href="/" className="hover:text-amber-300 transition py-1">{t.navHome}</Link>
-            <Link href="/about" className="hover:text-amber-300 transition py-1">{t.navAbout}</Link>
-            <Link href="/menu" className="hover:text-amber-300 transition py-1">{t.navMenu}</Link>
+            <Link href="/" className="hover:text-amber-300 transition py-1">HOME</Link>
+            <Link href="/about" className="hover:text-amber-300 transition py-1 text-amber-300 font-extrabold">ABOUT</Link>
+            <Link href="/menu" className="hover:text-amber-300 transition py-1">MENU</Link>
             <Link href="/paani" className="hover:text-amber-300 transition py-1 text-amber-300 font-extrabold flex items-center gap-1">
               <span>OUR PAANI (FLAVOURS)</span>
             </Link>
-            <Link href="/visit" className="hover:text-amber-300 transition py-1">{t.navVisit}</Link>
-            <Link href="/track" className="hover:text-amber-300 transition py-1 text-emerald-300">{t.navTrack}</Link>
+            <Link href="/visit" className="hover:text-amber-300 transition py-1">VISIT US</Link>
+            <Link href="/track" className="hover:text-amber-300 transition py-1 text-emerald-300">TRACK ORDER</Link>
           </div>
 
           {/* Right Controls: Dropdown Language + Admin Login + Order CTA */}
