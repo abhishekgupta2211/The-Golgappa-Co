@@ -102,9 +102,10 @@ export default function AdminDashboardPage() {
   const handleLogout = async () => {
     try {
       await fetch("/api/admin/logout", { method: "POST" });
-      router.push("/admin/login");
+      router.push("/"); // Direct redirect to Home Page on logout
     } catch (err) {
       console.error("Logout failed", err);
+      router.push("/");
     }
   };
 
@@ -170,7 +171,7 @@ export default function AdminDashboardPage() {
             className="px-4 py-2 bg-red-800/80 hover:bg-red-700 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 transition shadow-md"
           >
             <LogOut className="w-4 h-4" />
-            <span>LOGOUT</span>
+            <span>LOGOUT → HOME</span>
           </button>
         </div>
 
