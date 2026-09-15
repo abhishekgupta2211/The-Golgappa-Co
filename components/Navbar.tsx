@@ -33,6 +33,7 @@ export function Navbar({ onOpenOrderModal, cartCount }: { onOpenOrderModal: () =
           {/* Clean Short Navbar Links */}
           <div className="hidden lg:flex items-center gap-7 font-bold text-xs uppercase tracking-wider text-emerald-100">
             <Link href="/" className="hover:text-amber-300 transition py-1">{t.navHome}</Link>
+            <Link href="/about" className="hover:text-amber-300 transition py-1">{t.navAbout}</Link>
             <Link href="/menu" className="hover:text-amber-300 transition py-1">{t.navMenu}</Link>
             <Link href="/paani" className="hover:text-amber-300 transition py-1 text-amber-300 font-extrabold flex items-center gap-1">
               <span>OUR PAANI (FLAVOURS)</span>
@@ -121,6 +122,7 @@ export function Navbar({ onOpenOrderModal, cartCount }: { onOpenOrderModal: () =
 
           <div className="grid grid-cols-2 gap-2 font-bold text-emerald-100 text-xs uppercase pt-1">
             <Link href="/" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">{t.navHome}</Link>
+            <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">{t.navAbout}</Link>
             <Link href="/menu" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">{t.navMenu}</Link>
             <Link href="/paani" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 text-amber-300 font-bold rounded-xl">OUR PAANI (FLAVOURS)</Link>
             <Link href="/visit" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">{t.navVisit}</Link>
