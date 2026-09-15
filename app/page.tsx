@@ -10,6 +10,8 @@ import { OrderDrawer } from "@/components/OrderDrawer";
 import { AboutVisitSection } from "@/components/AboutVisitSection";
 import { ReviewsSection } from "@/components/ReviewsSection";
 import { useLanguage } from "@/components/LanguageContext";
+import { Heart, PartyPopper } from "lucide-react";
+import Link from "next/link";
 
 export default function HomePage() {
   const { t } = useLanguage();
