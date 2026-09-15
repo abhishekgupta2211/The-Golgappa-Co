@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/components/LanguageContext";
-import { Plus, Flame, Sparkles, CheckCircle2 } from "lucide-react";
+import { Plus, Flame, Sparkles, CheckCircle2, ShoppingBag } from "lucide-react";
 
 export interface Product {
   id: string;
@@ -26,90 +27,106 @@ export function MenuSection({
   const { t } = useLanguage();
 
   return (
-    <section id="menu" className="py-20 bg-[#fffdf7] text-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="menu" className="py-24 w-full bg-[#030907] text-white border-t border-emerald-900/40 relative overflow-hidden">
+      
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-emerald-600/10 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <span className="text-emerald-800 font-extrabold uppercase tracking-widest text-xs bg-emerald-100 px-4 py-1.5 rounded-full border border-emerald-300">
-            {t.navMenu}
-          </span>
-          <h2 className="text-4xl sm:text-5xl font-black text-[#0f382c] tracking-tight">
+        <div className="text-center max-w-3xl mx-auto space-y-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 bg-[#091f18] border border-amber-400/40 px-4 py-1.5 rounded-full text-amber-300 text-xs font-black uppercase tracking-wider"
+          >
+            <Sparkles className="w-4 h-4 text-amber-400" />
+            <span>2026 SIGNATURE STREET FOOD MENU</span>
+          </motion.div>
+
+          <h2 className="text-4xl sm:text-6xl font-black font-serif uppercase tracking-tight text-[#fffdf7]">
             {t.menuTitle}
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 font-medium">
+          <p className="text-emerald-200/80 font-medium text-base sm:text-lg">
             {t.menuSub}
           </p>
         </div>
 
-        {/* Product Grid */}
+        {/* 2026 Ultra-Modern Product Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((prod) => {
+          {products.map((prod, idx) => {
             const countInCart = cart[prod.id] || 0;
 
             return (
-              <div
+              <motion.div
                 key={prod.id}
-                className="bg-white rounded-3xl overflow-hidden shadow-xl border border-emerald-900/10 hover:shadow-2xl hover:-translate-y-1 transition duration-300 flex flex-col justify-between"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="bg-[#091f18]/90 border border-emerald-700/60 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-xl flex flex-col justify-between group hover:border-amber-400/80 transition-all duration-300"
               >
                 <div>
                   {/* Product Image & Badges */}
-                  <div className="relative h-64 overflow-hidden group">
+                  <div className="relative h-64 overflow-hidden">
                     <img
                       src={prod.image}
                       alt={prod.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                      className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
                     />
-                    <div className="absolute top-4 left-4 bg-emerald-950/80 backdrop-blur-md text-amber-300 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
-                      <Flame className="w-3.5 h-3.5 text-red-500 fill-red-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#091f18] via-transparent to-transparent opacity-90" />
+                    
+                    {/* Price Tag */}
+                    <div className="absolute top-4 right-4 bg-amber-400 text-emerald-950 font-black text-sm px-4 py-1.5 rounded-full shadow-lg border border-white/40">
+                      ₹{prod.price}
+                    </div>
+
+                    {/* Spice Level */}
+                    <div className="absolute bottom-4 left-4 bg-[#030907]/90 text-amber-300 font-bold text-xs px-3.5 py-1.5 rounded-full border border-amber-400/40 flex items-center gap-1.5 backdrop-blur-md">
+                      <Flame className="w-3.5 h-3.5 text-red-400 fill-red-400" />
                       <span>{prod.spiceLevel}</span>
                     </div>
-                    {!prod.available && (
-                      <div className="absolute inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center text-white font-black text-xl uppercase tracking-widest">
-                        {t.outOfStock}
-                      </div>
-                    )}
                   </div>
 
-                  {/* Details */}
+                  {/* Title & Desc */}
                   <div className="p-6 space-y-3">
-                    <div className="flex justify-between items-start">
-                      <h3 className="text-xl font-bold text-[#0f382c]">{prod.name}</h3>
-                      <span className="text-2xl font-black text-emerald-800 font-mono">
-                        ₹{prod.price}
-                      </span>
-                    </div>
-                    <p className="text-sm text-gray-600 leading-relaxed font-normal">
+                    <h3 className="text-2xl font-black font-serif text-amber-300 group-hover:text-amber-200 transition">
+                      {prod.name}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-emerald-100/80 font-medium leading-relaxed">
                       {prod.description}
                     </p>
                   </div>
                 </div>
 
-                {/* Card Footer / Add CTA */}
-                <div className="px-6 pb-6 pt-2">
+                {/* Card Footer CTA */}
+                <div className="p-6 pt-0">
                   <button
-                    disabled={!prod.available}
                     onClick={() => onAddToCart(prod)}
-                    className={`w-full py-3.5 px-6 rounded-2xl font-bold text-sm flex items-center justify-center gap-2 transition ${
+                    className={`w-full py-3.5 rounded-2xl font-black text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 shadow-lg ${
                       countInCart > 0
-                        ? "bg-emerald-800 text-white shadow-md hover:bg-emerald-900"
-                        : "bg-[#0f382c] hover:bg-emerald-900 text-amber-300 shadow-md"
-                    } ${!prod.available ? "opacity-50 cursor-not-allowed" : ""}`}
+                        ? "bg-gradient-to-r from-emerald-500 to-teal-400 text-emerald-950 shadow-emerald-500/20"
+                        : "bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-500 hover:from-amber-300 text-emerald-950"
+                    }`}
                   >
                     {countInCart > 0 ? (
                       <>
-                        <CheckCircle2 className="w-5 h-5 text-amber-400" />
-                        <span>ADDED ({countInCart})</span>
+                        <CheckCircle2 className="w-4 h-4" />
+                        <span>ADDED TO PLATE ({countInCart})</span>
                       </>
                     ) : (
                       <>
-                        <Plus className="w-5 h-5 text-amber-400" />
-                        <span>{t.add}</span>
+                        <Plus className="w-4 h-4" />
+                        <span>ADD TO PLATE</span>
                       </>
                     )}
                   </button>
                 </div>
-              </div>
+
+              </motion.div>
             );
           })}
         </div>
