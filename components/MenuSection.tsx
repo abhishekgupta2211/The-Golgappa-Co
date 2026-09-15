@@ -54,8 +54,8 @@ export function MenuSection({
           </p>
         </div>
 
-        {/* 2026 Ultra-Modern Product Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* 2026 Ultra-Modern Product Grid with Equal Card Heights & Strict Alignment */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {products.map((prod, idx) => {
             const countInCart = cart[prod.id] || 0;
 
@@ -67,11 +67,11 @@ export function MenuSection({
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 whileHover={{ y: -8 }}
-                className="bg-[#091f18]/90 border border-emerald-700/60 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-xl flex flex-col justify-between group hover:border-amber-400/80 transition-all duration-300"
+                className="bg-[#091f18]/90 border border-emerald-700/60 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-xl flex flex-col justify-between h-full group hover:border-amber-400/80 transition-all duration-300"
               >
-                <div>
+                <div className="flex flex-col flex-1">
                   {/* Product Image & Badges */}
-                  <div className="relative h-64 overflow-hidden">
+                  <div className="relative h-64 overflow-hidden shrink-0">
                     <img
                       src={prod.image}
                       alt={prod.name}
@@ -92,18 +92,20 @@ export function MenuSection({
                   </div>
 
                   {/* Title & Desc */}
-                  <div className="p-6 space-y-3">
-                    <h3 className="text-2xl font-black font-serif text-amber-300 group-hover:text-amber-200 transition">
-                      {prod.name}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-emerald-100/80 font-medium leading-relaxed">
-                      {prod.description}
-                    </p>
+                  <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-2xl font-black font-serif text-amber-300 group-hover:text-amber-200 transition">
+                        {prod.name}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-emerald-100/80 font-medium leading-relaxed mt-2">
+                        {prod.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
                 {/* Card Footer CTA */}
-                <div className="p-6 pt-0">
+                <div className="p-6 pt-0 mt-auto">
                   <button
                     onClick={() => onAddToCart(prod)}
                     className={`w-full py-3.5 rounded-2xl font-black text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 shadow-lg ${
