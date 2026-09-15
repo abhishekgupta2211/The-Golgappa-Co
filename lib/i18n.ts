@@ -4,41 +4,39 @@ export type Language = 'en' | 'hi' | 'bn';
 
 export const translations = {
   en: {
-    // Brand & Header
     brandName: "THE GOLGAPPA CO.",
     tagline: "Crispy. Chatpata. Addictive.",
-    since: "Serving Happiness Since 2004 (20+ Years)",
+    since: "Serving Happiness Since 2004 (20+ Years Legacy)",
     ownerName: "Owner: Mahesh Kumar Gupta",
+    phone: "9369610213",
     
     // Nav
     navHome: "Home",
-    navMenu: "Golgappe",
-    navPaani: "Our Paani",
-    navAbout: "About Us",
-    navReviews: "Reviews",
-    navVisit: "Visit Us",
+    navMenu: "Golgappa Menu",
+    navPaani: "Our 4 Paani Special",
+    navCatering: "Bulk & Event Booking",
+    navAbout: "Our Story",
+    navVisit: "Visit Stall",
     navTrack: "Track Order",
     navAdmin: "Owner Login",
-    orderNow: "ORDER NOW",
+    orderNow: "ORDER GOLGAPPA NOW",
 
     // Hero
-    heroBadge: "Freshly Made • Made to Order • 20+ Years Legacy",
+    heroBadge: "100% Pure Pani Puri • 20+ Years Legacy • Live Stalls for Events",
     heroTitle: "GOLGAPPA JO DIL SE YAAD RAHE.",
-    heroSub: "Crispy Puri. Chatpata Masala. Teekha Paani.",
+    heroSub: "Crispy Puri. Chatpata Masala. Teekha Mineral Paani.",
     btnBook: "BOOK YOUR PLATE",
+    btnEvent: "BOOK FOR WEDDING / EVENT",
     btnVisit: "VISIT OUR STALL",
 
-    // Menu Section
-    menuTitle: "Choose Your Golgappa",
-    menuSub: "Handcrafted by Mahesh Kumar Gupta with signature secret spices.",
-    spiceLevel: "Spice Level",
-    price: "Price",
-    add: "ADD TO CART",
-    outOfStock: "Sold Out",
+    // Catering / Subh Avsar
+    eventHeading: "Special Event & Wedding Catering Stalls",
+    eventSub: "We take bulk & live stall orders for Weddings, Birthdays, Anniversaries, Corporate Parties & all Auspicious Occasions!",
+    eventCall: "Call Mahesh Kumar Gupta: +91 9369610213",
 
     // Customization & Ordering
     cartTitle: "Your Golgappa Plate",
-    step1: "1. Items",
+    step1: "1. Select Golgappa",
     step2: "2. Customize",
     step3: "3. Details",
     step4: "4. Review",
@@ -48,72 +46,55 @@ export const translations = {
     subtotal: "Subtotal",
     total: "Total",
     paymentMethod: "Payment Method",
-    payAtStall: "Pay at Stall (Cash / Cash on Pickup)",
+    payAtStall: "Pay at Stall / Cash on Delivery",
     continue: "CONTINUE",
     confirmBooking: "CONFIRM BOOKING",
     
     // Customer Form
     fullName: "Full Name",
     namePlaceholder: "Enter your full name",
-    phone: "Mobile Number",
-    phonePlaceholder: "10-digit mobile number",
-    pickupTime: "Pickup Time",
+    phoneLabel: "Mobile Number",
+    phonePlaceholder: "Enter 10-digit mobile number",
+    pickupTime: "Pickup / Event Time",
     asap: "ASAP (Within 15-20 Mins)",
-    specialNotes: "Special Instructions",
-    notesPlaceholder: "Any special request? (e.g. Extra dry puri)",
-
-    // About Section
-    aboutHeading: "20+ Years of Chatpata Excellence",
-    aboutPara1: "Started in 2004 by Mahesh Kumar Gupta, THE GOLGAPPA CO. has grown into the city's favorite street food destination.",
-    aboutPara2: "Every puri is fried in clean oil, filled with freshly boiled potato-chana masala, and served with pure mineral water infused with handpicked mint and spices.",
-
-    // Tracking
-    trackTitle: "Track Your Order",
-    trackSub: "Enter your Order ID and Registered Mobile Number to view live status.",
-    orderIdLabel: "Order ID (e.g. GP-20260915-001)",
-    searchOrder: "TRACK ORDER STATUS",
-    
-    // Admin
-    adminTitle: "Owner Admin Portal",
-    adminSub: "Real-time order notifications & shop control panel",
+    specialNotes: "Special Event Request / Notes",
+    notesPlaceholder: "Any special request or event details?",
   },
   hi: {
-    // Brand & Header
     brandName: "द गोलगप्पा कंपनी",
     tagline: "क्रिस्पी। चटपटा। एडिक्टिव।",
-    since: "2004 से स्वाद और भरोसे की परंपरा (20+ साल)",
+    since: "2004 से शुद्धता और स्वाद का भरोसा (20+ साल)",
     ownerName: "दुकान मालिक: महेश कुमार गुप्ता",
+    phone: "9369610213",
     
     // Nav
     navHome: "होम",
-    navMenu: "गोलगप्पे",
-    navPaani: "हमारा पानी",
-    navAbout: "हमारे बारे में",
-    navReviews: "रिव्यूज",
+    navMenu: "गोलगप्पा मेनू",
+    navPaani: "हमारे 4 खास पानी",
+    navCatering: "शुभ अवसर व पार्टी ऑर्डर",
+    navAbout: "हमारी कहानी",
     navVisit: "दुकान पर आएं",
     navTrack: "ऑर्डर ट्रैक करें",
     navAdmin: "मालिक लॉगिन",
-    orderNow: "अभी ऑर्डर करें",
+    orderNow: "अभी गोलगप्पा बुक करें",
 
     // Hero
-    heroBadge: "ताज़ा तैयार • ऑर्डर पर बना • 20+ सालों का भरोसा",
+    heroBadge: "100% शुद्ध पानी पूरी • 20+ सालों की विरासत • शादी व पार्टी स्टॉल उपलब्ध",
     heroTitle: "गोलगप्पा जो दिल से याद रहे।",
-    heroSub: "क्रिस्पी पूरी। चटपटा मसाला। तीखा पानी।",
+    heroSub: "क्रिस्पी पूरी। चटपटा मसाला। तीखा मिनरल पानी।",
     btnBook: "अपनी प्लेट बुक करें",
+    btnEvent: "शादी / पार्टी बुकिंग",
     btnVisit: "दुकान पर पधारें",
 
-    // Menu Section
-    menuTitle: "अपना पसंदीदा गोलगप्पा चुनें",
-    menuSub: "महेश कुमार गुप्ता जी के गुप्त मसालों से बना खास स्वाद।",
-    spiceLevel: "तीखापन",
-    price: "कीमत",
-    add: "ऑर्डर में जोड़ें",
-    outOfStock: "खत्म हो गया",
+    // Catering / Subh Avsar
+    eventHeading: "शादी व सभी शुभ अवसरों के लिए स्पेशल स्टॉल",
+    eventSub: "शादी, जन्मदिन, सगाई, मुंडन व कॉर्पोरेट पार्टी के लिए लाइव गोलगप्पा स्टॉल और बल्क ऑर्डर लिए जाते हैं!",
+    eventCall: "महेश कुमार गुप्ता जी से संपर्क करें: +91 9369610213",
 
     // Customization & Ordering
     cartTitle: "आपकी गोलगप्पा प्लेट",
-    step1: "1. आयटम",
-    step2: "2. कस्टमाइज़",
+    step1: "1. गोलगप्पा चुनें",
+    step2: "2. कस्टमाइज़ करें",
     step3: "3. विवरण",
     step4: "4. समीक्षा",
     spicePreference: "तीखापन चुनें",
@@ -122,107 +103,75 @@ export const translations = {
     subtotal: "उप-योग",
     total: "कुल राशि",
     paymentMethod: "भुगतान का तरीका",
-    payAtStall: "स्टॉल पर भुगतान करें (कैश / पिकअप के समय)",
+    payAtStall: "स्टॉल पर कैश भुगतान करें",
     continue: "आगे बढ़ें",
     confirmBooking: "बुकिंग कन्फर्म करें",
     
     // Customer Form
     fullName: "पूरा नाम",
     namePlaceholder: "अपना नाम दर्ज करें",
-    phone: "मोबाइल नंबर",
+    phoneLabel: "मोबाइल नंबर",
     phonePlaceholder: "10-अंकों का मोबाइल नंबर",
-    pickupTime: "पिकअप का समय",
+    pickupTime: "समय चुनें",
     asap: "तुरंत (15-20 मिनट में)",
-    specialNotes: "विशेष निर्देश",
-    notesPlaceholder: "कोई खास पसंद? (जैसे: सूखी पूरी extra)",
-
-    // About Section
-    aboutHeading: "20+ वर्षों की चटपटी विरासत",
-    aboutPara1: "सन 2004 में महेश कुमार गुप्ता द्वारा शुरू की गई 'द गोलगप्पा कंपनी' आज शहर का सबसे पसंदीदा स्ट्रीट फूड ब्रांड है।",
-    aboutPara2: "हर पूरी साफ़ तेल में तली जाती है, ताज़ा उबले आलू-चने के मसाले से भरी जाती है और मिनरल वाटर व ताज़ा पुदीने के पानी के साथ परोसी जाती है।",
-
-    // Tracking
-    trackTitle: "अपना ऑर्डर ट्रैक करें",
-    trackSub: "लाइव स्टेटस देखने के लिए अपना ऑर्डर ID और मोबाइल नंबर दर्ज करें।",
-    orderIdLabel: "ऑर्डर ID (उदा. GP-20260915-001)",
-    searchOrder: "स्टेटस देखें",
-    
-    // Admin
-    adminTitle: "ऑनर एडमिन पोर्टल",
-    adminSub: "रियल-टाइम ऑर्डर नोटिफिकेशन और कंट्रोल पैनल",
+    specialNotes: "विशेष अनुरोध / पार्टी डिटेल्स",
+    notesPlaceholder: "कोई खास पसंद या कार्यक्रम की जानकारी?",
   },
   bn: {
-    // Brand & Header
     brandName: "দ্যা গোলগাপ্পা কোং",
     tagline: "মুচমুচে। চটপটা। অতুলনীয়।",
-    since: "২০০৪ সাল থেকে স্বাদের ঐতিহ্য (২০+ বছর)",
+    since: "২০০৪ সাল থেকে বিশুদ্ধ ফুচকার ঐতিহ্য (২০+ বছর)",
     ownerName: "মালিক: মহেশ কুমার গুপ্তা",
+    phone: "9369610213",
     
     // Nav
     navHome: "হোম",
-    navMenu: "ফুচকা / গোলগাপ্পা",
-    navPaani: "আমাদের জল",
-    navAbout: "আমাদের কথা",
-    navReviews: "রিভিউ",
+    navMenu: "ফুচকা মেনু",
+    navPaani: "বিশেষ ৪ ধরনের জল",
+    navCatering: "অনুষ্ঠান ও পার্টি বুকিং",
+    navAbout: "আমাদের গল্প",
     navVisit: "দোকানে আসুন",
     navTrack: "অর্ডার ট্র্যাক করুন",
     navAdmin: "মালিক লগইন",
     orderNow: "এখনই বুক করুন",
 
     // Hero
-    heroBadge: "সদ্য প্রস্তুত • অর্ডারে তৈরি • ২০+ বছরের বিশ্বাস",
+    heroBadge: "১০০% খাঁটি ফুচকা • ২০+ বছরের বিশ্বস্ততা • বিয়েবাড়ি ও পার্টির বিশেষ স্টল",
     heroTitle: "এমন গোলগাপ্পা যা মন কেড়ে নেবে।",
-    heroSub: "মুচমুচে পুরি। চটপটা মশলা। ঝাল ঝাল জল।",
+    heroSub: "মুচমুচে পুরি। চটপটা মশলা। ঝাল মিনারেল জল।",
     btnBook: "প্লেট বুক করুন",
+    btnEvent: "বিয়েবাড়ি / অনুষ্ঠান বুকিং",
     btnVisit: "দোকানে আসুন",
 
-    // Menu Section
-    menuTitle: "আপনার পছন্দের গোলগাপ্পা বেছে নিন",
-    menuSub: "মহেশ কুমার গুপ্তার নিজস্ব মশলায় তৈরি সেরা স্বাদ।",
-    spiceLevel: "ঝালের পরিমাণ",
-    price: "দাম",
-    add: "কার্টে যোগ করুন",
-    outOfStock: "শেষ হয়ে গেছে",
+    // Catering / Subh Avsar
+    eventHeading: "বিয়ে ও সমস্ত শুভ অনুষ্ঠানের লাইভ ফুচকা স্টল",
+    eventSub: "বিয়ে, জন্মদিন ও যেকোনো শুভ অনুষ্ঠানে লাইভ গোলগাপ্পা স্টল এবং বাল্ক অর্ডারের সুব্যবস্থা রয়েছে!",
+    eventCall: "যোগাযোগ করুন মহেশ কুমার গুপ্তা: +91 9369610213",
 
     // Customization & Ordering
     cartTitle: "আপনার ফুচকা থালি",
-    step1: "১. আইটেম",
-    step2: "২. পছন্দ",
+    step1: "১. ফুচকা বেছে নিন",
+    step2: "২. কাস্টমাইজ করুন",
     step3: "৩. তথ্য",
     step4: "৪. রিভিউ",
-    spicePreference: "ঝাল পছন্দ করুন",
+    spicePreference: "ঝালের পরিমাণ",
     paaniPreference: "জলের পছন্দ",
     addOns: "অতিরিক্ত আইটেম",
     subtotal: "মোট",
     total: "সর্বমোট",
     paymentMethod: "পেমেন্ট পদ্ধতি",
-    payAtStall: "দোকানে পেমেন্ট করুন (ক্যাশ)",
+    payAtStall: "দোকানে ক্যাশ পেমেন্ট করুন",
     continue: "এগিয়ে যান",
     confirmBooking: "বুকিং নিশ্চিত করুন",
     
     // Customer Form
     fullName: "সম্পূর্ণ নাম",
     namePlaceholder: "আপনার নাম লিখুন",
-    phone: "মোবাইল নম্বর",
+    phoneLabel: "মোবাইল নম্বর",
     phonePlaceholder: "১০ ডিজিটের মোবাইল নম্বর",
-    pickupTime: "পিকআপের সময়",
+    pickupTime: "সময় পছন্দ করুন",
     asap: "যত দ্রুত সম্ভব (১৫-২০ মিনিট)",
     specialNotes: "বিশেষ অনুরোধ",
-    notesPlaceholder: "কোন বিশেষ অনুরোধ? (যেমন: শুকনো পুরি বেশি)",
-
-    // About Section
-    aboutHeading: "২০+ বছরের চটপটা ঐতিহ্য",
-    aboutPara1: "২০০৪ সালে মহেশ কুমার গুপ্তার হাত ধরে তৈরি 'দ্যা গোলগাপ্পা কোং' আজ শহরের অন্যতম প্রিয় ফুচকা গন্তব্য।",
-    aboutPara2: "প্রতিটি পুরি স্বাস্থ্যকর তেলে ভাজা হয় এবং টাটকা পুদিনা ও মিনারেল ওয়াটার দিয়ে তৈরি বিশেষ জলে পরিবেশন করা হয়।",
-
-    // Tracking
-    trackTitle: "অর্ডার ট্র্যাক করুন",
-    trackSub: "আপনার অর্ডার আইডি ও ফোন নম্বর দিন।",
-    orderIdLabel: "অর্ডার ID (যেমন GP-20260915-001)",
-    searchOrder: "স্ট্যাটাস দেখুন",
-    
-    // Admin
-    adminTitle: "মালিক অ্যাডমিন পোর্টাল",
-    adminSub: "রিয়েল-টাইম অর্ডার নোটিফিকেশন ও কন্ট্রোল প্যানেল",
+    notesPlaceholder: "কোন বিশেষ অনুরোধ বা অনুষ্ঠানের বিস্তারিত?",
   }
 };
