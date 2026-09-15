@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useLanguage } from "@/components/LanguageContext";
 import { Product } from "./MenuSection";
-import { X, ArrowRight, Minus, Plus, Check, ShoppingBag, Clock, Sparkles } from "lucide-react";
+import { X, ArrowRight, Minus, Plus, Check, ShoppingBag } from "lucide-react";
 import confetti from "canvas-confetti";
 
 export function OrderDrawer({
@@ -45,7 +45,7 @@ export function OrderDrawer({
   const cartItemIds = Object.keys(cart).filter((id) => cart[id] > 0);
   const selectedProducts = products.filter((p) => cartItemIds.includes(p.id));
 
-  // Calculate Subtotal & Total
+  // Calculate Subtotal & Total EXACTLY from cart state
   let itemsSubtotal = 0;
   selectedProducts.forEach((p) => {
     itemsSubtotal += p.price * cart[p.id];
@@ -101,6 +101,8 @@ export function OrderDrawer({
     try {
       const orderItems = selectedProducts.map((p) => ({
         productId: p.id,
+        name: p.name,
+        price: p.price,
         quantity: cart[p.id],
         spiceLevel,
         paniPreference,
@@ -111,8 +113,8 @@ export function OrderDrawer({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          customerName,
-          customerPhone,
+          customerName: customerName.trim(),
+          customerPhone: customerPhone.trim(),
           pickupTime,
           notes,
           items: orderItems,
@@ -141,7 +143,7 @@ export function OrderDrawer({
         {/* Drawer Header */}
         <div className="bg-[#0f382c] text-white px-6 py-4 flex items-center justify-between border-b border-emerald-800">
           <div>
-            <h3 className="font-extrabold text-lg text-amber-300 flex items-center gap-2">
+            <h3 className="font-extrabold text-lg text-amber-300 flex items-center gap-2 font-serif">
               <ShoppingBag className="w-5 h-5 text-amber-400" />
               {t.cartTitle}
             </h3>
@@ -161,7 +163,7 @@ export function OrderDrawer({
         {/* Drawer Content Body */}
         <div className="flex-1 overflow-y-auto p-6 space-y-6">
           {errorMsg && (
-            <div className="bg-red-50 border border-red-200 text-red-700 p-3 rounded-xl text-sm font-semibold">
+            <div className="bg-red-50 border border-red-200 text-red-700 p-3.5 rounded-xl text-xs font-bold">
               ⚠️ {errorMsg}
             </div>
           )}
@@ -169,7 +171,7 @@ export function OrderDrawer({
           {/* STEP 1: Select Quantities */}
           {step === 1 && (
             <div className="space-y-4">
-              <h4 className="font-bold text-gray-800 text-base">{t.navMenu}</h4>
+              <h4 className="font-bold text-gray-800 text-sm uppercase tracking-wider">Select Golgappa Plates</h4>
               {products.map((prod) => {
                 const qty = cart[prod.id] || 0;
                 return (
@@ -285,7 +287,7 @@ export function OrderDrawer({
               </div>
 
               <div>
-                <label className="block font-bold text-xs text-gray-700 uppercase mb-1">{t.phone} *</label>
+                <label className="block font-bold text-xs text-gray-700 uppercase mb-1">{t.phoneLabel} *</label>
                 <input
                   type="tel"
                   placeholder={t.phonePlaceholder}
@@ -349,7 +351,7 @@ export function OrderDrawer({
                 </div>
               </div>
 
-              <div className="bg-emerald-950 text-white p-4 rounded-2xl space-y-2">
+              <div className="bg-[#0f382c] text-white p-4 rounded-2xl space-y-2">
                 <div className="flex justify-between text-xs text-emerald-200">
                   <span>{t.paymentMethod}</span>
                   <span className="font-bold text-amber-300">{t.payAtStall}</span>
@@ -369,10 +371,10 @@ export function OrderDrawer({
                 <Check className="w-10 h-10 stroke-[3]" />
               </div>
 
-              <h3 className="text-3xl font-black text-[#0f382c]">Booking Confirmed! 🎉</h3>
+              <h3 className="text-3xl font-black text-[#0f382c] font-serif">Booking Confirmed! 🎉</h3>
               <p className="text-sm text-gray-600 font-medium">Your Golgappe are waiting for you.</p>
 
-              <div className="bg-emerald-900 text-white p-6 rounded-3xl space-y-3 text-left shadow-lg border border-emerald-700">
+              <div className="bg-[#0f382c] text-white p-6 rounded-3xl space-y-3 text-left shadow-lg border border-emerald-700">
                 <div className="flex justify-between items-center border-b border-emerald-800 pb-2">
                   <span className="text-xs text-emerald-300 font-bold uppercase">ORDER ID</span>
                   <span className="font-mono font-black text-amber-300 text-lg">{createdOrder.orderNumber}</span>
@@ -387,9 +389,9 @@ export function OrderDrawer({
                 </div>
                 <div className="flex justify-between text-xs text-emerald-200">
                   <span>TOTAL AMOUNT</span>
-                  <span className="font-mono font-bold text-amber-300">₹{createdOrder.total}</span>
+                  <span className="font-mono font-black text-amber-300 text-base">₹{createdOrder.total}</span>
                 </div>
-                <div className="pt-2 text-[11px] text-amber-200 bg-emerald-950 p-2 rounded-xl text-center font-semibold">
+                <div className="pt-2 text-[11px] text-amber-200 bg-emerald-950 p-2.5 rounded-xl text-center font-semibold">
                   💳 Payment will be made at the stall upon pickup.
                 </div>
               </div>
@@ -402,13 +404,13 @@ export function OrderDrawer({
           <div className="p-6 bg-white border-t border-gray-200 space-y-3">
             <div className="flex justify-between items-center font-bold text-[#0f382c]">
               <span>{t.total}:</span>
-              <span className="text-2xl font-mono text-emerald-800">₹{totalAmount}</span>
+              <span className="text-2xl font-mono text-emerald-800 font-black">₹{totalAmount}</span>
             </div>
 
             {step < 4 ? (
               <button
                 onClick={handleNextStep}
-                className="w-full bg-[#0f382c] hover:bg-emerald-900 text-amber-300 font-black py-4 rounded-2xl shadow-lg flex items-center justify-center gap-2 transition"
+                className="w-full bg-[#0f382c] hover:bg-emerald-900 text-amber-300 font-black py-4 rounded-2xl shadow-lg flex items-center justify-center gap-2 transition text-sm uppercase tracking-wider"
               >
                 <span>{t.continue}</span>
                 <ArrowRight className="w-5 h-5" />
@@ -417,7 +419,7 @@ export function OrderDrawer({
               <button
                 disabled={loading}
                 onClick={handleConfirmBooking}
-                className="w-full bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-300 text-emerald-950 font-black py-4 rounded-2xl shadow-xl flex items-center justify-center gap-2 text-lg transition"
+                className="w-full bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-300 text-emerald-950 font-black py-4 rounded-2xl shadow-xl flex items-center justify-center gap-2 text-base uppercase tracking-wider transition"
               >
                 {loading ? "Creating Order..." : t.confirmBooking}
               </button>

@@ -48,24 +48,24 @@ export default function TrackOrderPage() {
       {/* Header */}
       <header className="bg-[#0f382c] text-white py-6 border-b border-emerald-800">
         <div className="max-w-4xl mx-auto px-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 text-amber-300 font-bold hover:underline">
+          <Link href="/" className="flex items-center gap-2 text-amber-300 font-bold hover:underline text-sm">
             <ArrowLeft className="w-5 h-5" /> Back to Home
           </Link>
-          <span className="font-black text-[#fffdf7] text-xl tracking-tight">THE GOLGAPPA CO.</span>
+          <span className="font-black text-[#fffdf7] text-xl tracking-tight font-serif">THE GOLGAPPA CO.</span>
         </div>
       </header>
 
       {/* Main Track Section */}
       <main className="flex-1 max-w-2xl mx-auto px-4 py-12 w-full space-y-8">
         <div className="text-center space-y-2">
-          <h1 className="text-3xl font-black text-[#0f382c]">{t.trackTitle}</h1>
+          <h1 className="text-3xl font-black text-[#0f382c] font-serif">{t.trackTitle}</h1>
           <p className="text-sm text-gray-600 font-medium">{t.trackSub}</p>
         </div>
 
         {/* Search Form */}
         <form onSubmit={handleTrack} className="bg-white p-6 rounded-3xl shadow-xl border border-gray-200 space-y-4">
           {errorMsg && (
-            <div className="bg-red-50 border border-red-200 text-red-700 p-3 rounded-xl text-xs font-semibold">
+            <div className="bg-red-50 border border-red-200 text-red-700 p-3.5 rounded-xl text-xs font-bold">
               ⚠️ {errorMsg}
             </div>
           )}
@@ -74,7 +74,7 @@ export default function TrackOrderPage() {
             <label className="block text-xs font-bold uppercase text-gray-600 mb-1">Order ID *</label>
             <input
               type="text"
-              placeholder="e.g. GP-20260915-001"
+              placeholder="e.g. GP-20260915-079"
               value={orderNumber}
               onChange={(e) => setOrderNumber(e.target.value)}
               className="w-full p-3.5 rounded-xl border border-gray-300 text-sm font-bold uppercase focus:ring-2 focus:ring-emerald-600 outline-none"
@@ -97,9 +97,9 @@ export default function TrackOrderPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#0f382c] hover:bg-emerald-900 text-amber-300 font-black py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2"
+            className="w-full bg-[#0f382c] hover:bg-emerald-900 text-amber-300 font-black py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2 uppercase tracking-wider text-sm"
           >
-            <Search className="w-5 h-5" />
+            <Search className="w-5 h-5 text-amber-400" />
             <span>{loading ? "Searching..." : t.searchOrder}</span>
           </button>
         </form>
@@ -129,7 +129,7 @@ export default function TrackOrderPage() {
                   return (
                     <div key={st} className="flex flex-col items-center gap-1">
                       <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs ${
-                        isDone ? "bg-emerald-700 text-white" : "bg-gray-200 text-gray-400"
+                        isDone ? "bg-emerald-700 text-white shadow-md" : "bg-gray-200 text-gray-400"
                       }`}>
                         {idx + 1}
                       </div>
@@ -143,12 +143,13 @@ export default function TrackOrderPage() {
             </div>
 
             {/* Order Item Summary */}
-            <div className="bg-gray-50 p-4 rounded-2xl space-y-2 text-xs">
+            <div className="bg-gray-50 p-5 rounded-2xl space-y-2 text-xs">
               <p className="font-bold text-gray-700">Customer Details:</p>
-              <p>Name: <strong>{order.customerName}</strong></p>
-              <p>Pickup Time: <strong>{order.pickupTime}</strong></p>
-              <p className="pt-2 font-bold text-gray-700 border-t border-gray-200">Payment:</p>
-              <p className="text-emerald-800 font-bold">💳 Pay at Stall (UNPAID) - Total: ₹{order.total}</p>
+              <p>Name: <strong className="text-gray-900">{order.customerName}</strong></p>
+              <p>Mobile: <strong className="text-gray-900">{order.customerPhone}</strong></p>
+              <p>Pickup Time: <strong className="text-gray-900">{order.pickupTime}</strong></p>
+              <p className="pt-2 font-bold text-gray-700 border-t border-gray-200">Payment Summary:</p>
+              <p className="text-emerald-900 font-black text-sm">💳 Pay at Stall (UNPAID) - Total: <span className="font-mono text-amber-800 font-extrabold">₹{order.total}</span></p>
             </div>
           </div>
         )}
