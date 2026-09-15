@@ -10,16 +10,16 @@ export const translations = {
     ownerName: "Owner: Mahesh Kumar Gupta",
     phone: "9369610213",
     
-    // Nav
+    // Clean Compact Nav Labels
     navHome: "Home",
-    navMenu: "Golgappa Menu",
-    navPaani: "Our 4 Paani Special",
-    navCatering: "Bulk & Event Booking",
-    navAbout: "Our Story",
-    navVisit: "Visit Stall",
-    navTrack: "Track Order",
-    navAdmin: "Owner Login",
-    orderNow: "ORDER GOLGAPPA NOW",
+    navMenu: "Menu",
+    navPaani: "Paani",
+    navCatering: "Events",
+    navAbout: "About",
+    navVisit: "Visit",
+    navTrack: "Track",
+    navAdmin: "Admin",
+    orderNow: "ORDER NOW",
 
     // Hero
     heroBadge: "100% Pure Pani Puri • 20+ Years Legacy • Live Stalls for Events",
@@ -67,16 +67,16 @@ export const translations = {
     ownerName: "दुकान मालिक: महेश कुमार गुप्ता",
     phone: "9369610213",
     
-    // Nav
+    // Clean Compact Nav Labels
     navHome: "होम",
-    navMenu: "गोलगप्पा मेनू",
-    navPaani: "हमारे 4 खास पानी",
-    navCatering: "शुभ अवसर व पार्टी ऑर्डर",
-    navAbout: "हमारी कहानी",
-    navVisit: "दुकान पर आएं",
-    navTrack: "ऑर्डर ट्रैक करें",
-    navAdmin: "मालिक लॉगिन",
-    orderNow: "अभी गोलगप्पा बुक करें",
+    navMenu: "मेनू",
+    navPaani: "पानी",
+    navCatering: "इवेंट्स",
+    navAbout: "हमारे बारे में",
+    navVisit: "दुकान",
+    navTrack: "ट्रैक",
+    navAdmin: "मालिक",
+    orderNow: "ऑर्डर करें",
 
     // Hero
     heroBadge: "100% शुद्ध पानी पूरी • 20+ सालों की विरासत • शादी व पार्टी स्टॉल उपलब्ध",
@@ -124,16 +124,16 @@ export const translations = {
     ownerName: "মালিক: মহেশ কুমার গুপ্তা",
     phone: "9369610213",
     
-    // Nav
+    // Clean Compact Nav Labels
     navHome: "হোম",
-    navMenu: "ফুচকা মেনু",
-    navPaani: "বিশেষ ৪ ধরনের জল",
-    navCatering: "অনুষ্ঠান ও পার্টি বুকিং",
-    navAbout: "আমাদের গল্প",
-    navVisit: "দোকানে আসুন",
-    navTrack: "অর্ডার ট্র্যাক করুন",
-    navAdmin: "মালিক লগইন",
-    orderNow: "এখনই বুক করুন",
+    navMenu: "মেনু",
+    navPaani: "জল",
+    navCatering: "ইভেন্ট",
+    navAbout: "আমাদের কথা",
+    navVisit: "দোকান",
+    navTrack: "ট্র্যাক",
+    navAdmin: "মালিক",
+    orderNow: "বুক করুন",
 
     // Hero
     heroBadge: "১০০% খাঁটি ফুচকা • ২০+ বছরের বিশ্বস্ততা • বিয়েবাড়ি ও পার্টির বিশেষ স্টল",
