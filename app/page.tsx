@@ -8,9 +8,8 @@ import { TeekhaSlider } from "@/components/TeekhaSlider";
 import { MenuSection, Product } from "@/components/MenuSection";
 import { OrderDrawer } from "@/components/OrderDrawer";
 import { AboutVisitSection } from "@/components/AboutVisitSection";
+import { ReviewsSection } from "@/components/ReviewsSection";
 import { useLanguage } from "@/components/LanguageContext";
-import { Phone, MapPin, Heart, PartyPopper, ArrowRight, Sparkles } from "lucide-react";
-import Link from "next/link";
 
 export default function HomePage() {
   const { t } = useLanguage();
@@ -94,7 +93,10 @@ export default function HomePage() {
         {/* 5. Interactive Teekha Spice Slider */}
         <TeekhaSlider />
 
-        {/* 6. About & Stall Location */}
+        {/* 6. Google Verified Customer Reviews Section */}
+        <ReviewsSection />
+
+        {/* 7. About & Stall Location */}
         <AboutVisitSection />
       </main>
 

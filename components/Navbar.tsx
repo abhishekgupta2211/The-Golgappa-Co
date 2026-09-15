@@ -33,17 +33,11 @@ export function Navbar({ onOpenOrderModal, cartCount }: { onOpenOrderModal: () =
           {/* Clean Short Navbar Links */}
           <div className="hidden lg:flex items-center gap-7 font-bold text-xs uppercase tracking-wider text-emerald-100">
             <Link href="/" className="hover:text-amber-300 transition py-1">{t.navHome}</Link>
-            <Link href="/menu" className="hover:text-amber-300 transition py-1">{t.navMenu}</Link>
-            <Link href="/paani" className="hover:text-amber-300 transition py-1">{t.navPaani}</Link>
-            <Link href="/catering" className="text-amber-300 hover:text-amber-200 transition py-1 flex items-center gap-1 font-black px-3 py-1 rounded-full bg-emerald-900/80 border border-amber-400/40">
-              <PartyPopper className="w-3.5 h-3.5 text-amber-400" />
-              <span>{t.navCatering}</span>
-            </Link>
-            <Link href="/reviews" className="hover:text-amber-300 transition py-1 flex items-center gap-1 text-amber-300 font-bold">
-              <Star className="w-3.5 h-3.5 fill-amber-300 text-amber-300" />
-              <span>Reviews</span>
-            </Link>
             <Link href="/about" className="hover:text-amber-300 transition py-1">{t.navAbout}</Link>
+            <Link href="/menu" className="hover:text-amber-300 transition py-1">{t.navMenu}</Link>
+            <Link href="/paani" className="hover:text-amber-300 transition py-1 text-amber-300 font-extrabold flex items-center gap-1">
+              <span>OUR PAANI (FLAVOURS)</span>
+            </Link>
             <Link href="/visit" className="hover:text-amber-300 transition py-1">{t.navVisit}</Link>
             <Link href="/track" className="hover:text-amber-300 transition py-1 text-emerald-300">{t.navTrack}</Link>
           </div>
@@ -128,16 +122,13 @@ export function Navbar({ onOpenOrderModal, cartCount }: { onOpenOrderModal: () =
 
           <div className="grid grid-cols-2 gap-2 font-bold text-emerald-100 text-xs uppercase pt-1">
             <Link href="/" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">{t.navHome}</Link>
-            <Link href="/menu" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">{t.navMenu}</Link>
-            <Link href="/paani" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">{t.navPaani}</Link>
-            <Link href="/catering" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-900 text-amber-300 rounded-xl flex items-center gap-1">
-              <PartyPopper className="w-3.5 h-3.5" /> {t.navCatering}
-            </Link>
             <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">{t.navAbout}</Link>
+            <Link href="/menu" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">{t.navMenu}</Link>
+            <Link href="/paani" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 text-amber-300 font-bold rounded-xl">OUR PAANI (FLAVOURS)</Link>
             <Link href="/visit" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">{t.navVisit}</Link>
             <Link href="/track" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 text-emerald-300 rounded-xl">{t.navTrack}</Link>
             <Link href="/admin/login" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-900 text-amber-300 rounded-xl flex items-center gap-1 font-black">
-              <ShieldCheck className="w-3.5 h-3.5" /> {t.navAdmin} LOGIN
+              <ShieldCheck className="w-3.5 h-3.5" /> LOGIN
             </Link>
           </div>
         </div>
