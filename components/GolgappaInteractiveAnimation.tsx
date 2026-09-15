@@ -82,8 +82,8 @@ export function GolgappaInteractiveAnimation() {
           </p>
         </div>
 
-        {/* 2026 Interactive Interactive Tab Container */}
-        <div className="w-full max-w-5xl mx-auto bg-[#091f18]/90 border-2 border-amber-400/40 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-2xl space-y-8">
+        {/* 2026 Interactive Interactive Tab Container - Full Width max-w-7xl */}
+        <div className="w-full max-w-7xl mx-auto bg-[#091f18]/90 border-2 border-amber-400/40 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-2xl space-y-8">
           
           {/* Step Selector Buttons */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">

@@ -107,7 +107,7 @@ export function ReviewsSection() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="w-full max-w-5xl mx-auto bg-[#091f18]/90 border-2 border-amber-400/50 text-white p-6 sm:p-10 rounded-3xl shadow-2xl backdrop-blur-2xl flex flex-col md:flex-row items-center justify-between gap-6"
+          className="w-full max-w-7xl mx-auto bg-[#091f18]/90 border-2 border-amber-400/50 text-white p-6 sm:p-10 rounded-3xl shadow-2xl backdrop-blur-2xl flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <div className="space-y-3 text-center md:text-left">
             <div className="inline-flex items-center gap-2 bg-amber-400 text-emerald-950 font-black text-xs px-3.5 py-1 rounded-full uppercase tracking-wider">
@@ -140,8 +140,8 @@ export function ReviewsSection() {
           </a>
         </motion.div>
 
-        {/* 2026 Equal Height Reviews Grid */}
-        <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+        {/* 2026 Equal Height Reviews Grid - Full Width max-w-7xl */}
+        <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {filteredReviews.map((rev, idx) => (
             <motion.div
               key={rev.id}
