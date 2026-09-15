@@ -17,19 +17,6 @@ export function Hero({ onBookNow }: { onBookNow: () => void }) {
 
       <div className="w-full px-4 sm:px-8 lg:px-12 relative z-10 max-w-7xl mx-auto space-y-12">
         
-        {/* Top Minimal Badge */}
-        <div className="flex justify-center">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-emerald-900 text-amber-300 border border-emerald-800 px-5 py-2.5 rounded-full text-xs sm:text-sm font-extrabold uppercase tracking-widest shadow-lg"
-          >
-            <Sparkles className="w-4 h-4 text-amber-400" />
-            <span>THE GOLGAPPA CO. • 2004 - 2026 LEGACY</span>
-          </motion.div>
-        </div>
-
         {/* Hero Grid Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
