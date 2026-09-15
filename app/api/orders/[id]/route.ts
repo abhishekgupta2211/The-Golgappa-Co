@@ -3,10 +3,11 @@ import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { sseClients } from '@/app/api/orders/route'
 
-export async function GET(req: Request, { params }: { params: { id: string } }) {
+export async function GET(req: Request, context: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await context.params
     const order = await prisma.order.findUnique({
-      where: { id: params.id },
+      where: { id },
       include: {
         items: {
           include: {
@@ -27,8 +28,9 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
   }
 }
 
-export async function PATCH(req: Request, { params }: { params: { id: string } }) {
+export async function PATCH(req: Request, context: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await context.params
     const body = await req.json()
     const { orderStatus, cancelReason, paymentStatus } = body
 
@@ -38,7 +40,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
     if (paymentStatus) updateData.paymentStatus = paymentStatus
 
     const updatedOrder = await prisma.order.update({
-      where: { id: params.id },
+      where: { id },
       data: updateData,
       include: {
         items: {
@@ -47,7 +49,6 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
       },
     })
 
-    // Notify clients on SSE of status update
     sseClients.forEach((send) => {
       send({ type: 'ORDER_UPDATED', order: updatedOrder })
     })
