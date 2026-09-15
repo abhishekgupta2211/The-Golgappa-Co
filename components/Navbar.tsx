@@ -36,7 +36,7 @@ export function Navbar({ onOpenOrderModal, cartCount }: { onOpenOrderModal: () =
             <Link href="/about" className="hover:text-amber-300 transition py-1 text-amber-300 font-extrabold">ABOUT</Link>
             <Link href="/menu" className="hover:text-amber-300 transition py-1">MENU</Link>
             <Link href="/paani" className="hover:text-amber-300 transition py-1 text-amber-300 font-extrabold flex items-center gap-1">
-              <span>OUR PAANI (FLAVOURS)</span>
+              <span>FLAVOURS</span>
             </Link>
             <Link href="/visit" className="hover:text-amber-300 transition py-1">VISIT US</Link>
             <Link href="/track" className="hover:text-amber-300 transition py-1 text-emerald-300">TRACK ORDER</Link>
@@ -121,12 +121,12 @@ export function Navbar({ onOpenOrderModal, cartCount }: { onOpenOrderModal: () =
           </div>
 
           <div className="grid grid-cols-2 gap-2 font-bold text-emerald-100 text-xs uppercase pt-1">
-            <Link href="/" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">{t.navHome}</Link>
-            <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">{t.navAbout}</Link>
-            <Link href="/menu" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">{t.navMenu}</Link>
-            <Link href="/paani" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 text-amber-300 font-bold rounded-xl">OUR PAANI (FLAVOURS)</Link>
-            <Link href="/visit" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">{t.navVisit}</Link>
-            <Link href="/track" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 text-emerald-300 rounded-xl">{t.navTrack}</Link>
+            <Link href="/" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">HOME</Link>
+            <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">ABOUT</Link>
+            <Link href="/menu" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">MENU</Link>
+            <Link href="/paani" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 text-amber-300 font-bold rounded-xl">FLAVOURS</Link>
+            <Link href="/visit" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">VISIT US</Link>
+            <Link href="/track" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 text-emerald-300 rounded-xl">TRACK ORDER</Link>
             <Link href="/admin/login" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-900 text-amber-300 rounded-xl flex items-center gap-1 font-black">
               <ShieldCheck className="w-3.5 h-3.5" /> LOGIN
             </Link>
