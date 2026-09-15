@@ -41,19 +41,19 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fffdf7] flex flex-col font-sans selection:bg-amber-300 selection:text-emerald-950">
+    <div className="min-h-screen w-full bg-[#fffdf7] flex flex-col font-sans selection:bg-amber-300 selection:text-emerald-950 overflow-x-hidden">
       
       <Navbar
         onOpenOrderModal={() => setDrawerOpen(true)}
         cartCount={totalCartCount}
       />
 
-      <main className="flex-1">
+      <main className="flex-1 w-full">
         <Hero onBookNow={() => setDrawerOpen(true)} />
         
         {/* Shubh Avsar Event Catering Highlight Section */}
-        <section className="bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 py-10 text-emerald-950 shadow-md">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <section className="bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 py-10 text-emerald-950 shadow-md w-full">
+          <div className="w-full px-4 sm:px-8 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-4 text-center sm:text-left">
               <div className="w-14 h-14 rounded-full bg-emerald-950 text-amber-300 flex items-center justify-center text-3xl shrink-0">
                 🎉
@@ -97,8 +97,8 @@ export default function HomePage() {
       />
 
       {/* Enhanced Footer */}
-      <footer className="bg-[#071d17] text-emerald-300 py-12 border-t border-emerald-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+      <footer className="bg-[#071d17] text-emerald-300 py-12 border-t border-emerald-900 w-full">
+        <div className="w-full px-4 sm:px-8 lg:px-12 text-center space-y-6">
           <div className="flex items-center justify-center gap-2">
             <span className="text-2xl font-black text-amber-300">{t.brandName}</span>
           </div>

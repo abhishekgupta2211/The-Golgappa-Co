@@ -4,19 +4,19 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/components/LanguageContext";
 import { Language } from "@/lib/i18n";
-import { ShoppingBag, Globe, Menu, X, Search, ShieldCheck, PartyPopper } from "lucide-react";
+import { ShoppingBag, Globe, Menu, X, ShieldCheck, PartyPopper } from "lucide-react";
 
 export function Navbar({ onOpenOrderModal, cartCount }: { onOpenOrderModal: () => void; cartCount: number }) {
   const { lang, setLang, t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-40 bg-[#071d17]/95 backdrop-blur-md border-b border-emerald-800/60 text-white shadow-xl">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="sticky top-0 z-40 bg-[#071d17]/95 backdrop-blur-md border-b border-emerald-800/60 text-white shadow-xl w-full">
+      <div className="w-full px-4 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between h-16 sm:h-20">
           
           {/* Logo & Brand Name */}
-          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
+          <Link href="/" className="flex items-center gap-3 group shrink-0">
             <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-400 via-amber-300 to-yellow-200 text-emerald-950 flex items-center justify-center font-black text-xl shadow-md transform group-hover:scale-105 transition duration-200 border-2 border-amber-300">
               🧆
             </div>
@@ -31,11 +31,11 @@ export function Navbar({ onOpenOrderModal, cartCount }: { onOpenOrderModal: () =
           </Link>
 
           {/* Clean Short Navbar Links */}
-          <div className="hidden lg:flex items-center gap-7 font-bold text-xs uppercase tracking-wider text-emerald-100">
+          <div className="hidden lg:flex items-center gap-8 font-bold text-xs uppercase tracking-wider text-emerald-100">
             <Link href="/" className="hover:text-amber-300 transition py-1">{t.navHome}</Link>
             <Link href="/menu" className="hover:text-amber-300 transition py-1">{t.navMenu}</Link>
             <Link href="/paani" className="hover:text-amber-300 transition py-1">{t.navPaani}</Link>
-            <Link href="/catering" className="text-amber-300 hover:text-amber-200 transition py-1 flex items-center gap-1 font-black px-2.5 py-1 rounded-full bg-emerald-900/80 border border-amber-400/40">
+            <Link href="/catering" className="text-amber-300 hover:text-amber-200 transition py-1 flex items-center gap-1 font-black px-3 py-1 rounded-full bg-emerald-900/80 border border-amber-400/40">
               <PartyPopper className="w-3.5 h-3.5 text-amber-400" />
               <span>{t.navCatering}</span>
             </Link>
@@ -44,15 +44,15 @@ export function Navbar({ onOpenOrderModal, cartCount }: { onOpenOrderModal: () =
             <Link href="/track" className="hover:text-amber-300 transition py-1 text-emerald-300">{t.navTrack}</Link>
           </div>
 
-          {/* Right Controls: 3 Languages & Order CTA */}
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
+          {/* Right Controls */}
+          <div className="hidden lg:flex items-center gap-4 shrink-0">
             <div className="flex items-center bg-emerald-950/80 p-1 rounded-full border border-emerald-700/50 text-xs">
               <Globe className="w-3.5 h-3.5 ml-2 text-emerald-400" />
               {(['en', 'hi', 'bn'] as Language[]).map((l) => (
                 <button
                   key={l}
                   onClick={() => setLang(l)}
-                  className={`px-2 py-0.5 rounded-full uppercase font-black text-[10px] transition ${
+                  className={`px-2.5 py-0.5 rounded-full uppercase font-black text-[10px] transition ${
                     lang === l ? "bg-amber-400 text-emerald-950 shadow-sm" : "text-emerald-200 hover:text-white"
                   }`}
                 >
@@ -63,7 +63,7 @@ export function Navbar({ onOpenOrderModal, cartCount }: { onOpenOrderModal: () =
 
             <button
               onClick={onOpenOrderModal}
-              className="relative group bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-500 hover:from-amber-300 hover:to-yellow-400 text-emerald-950 font-black px-5 py-2 rounded-full shadow-md hover:shadow-amber-500/20 transition flex items-center gap-2 transform active:scale-95 text-xs uppercase tracking-wider"
+              className="relative group bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-500 hover:from-amber-300 hover:to-yellow-400 text-emerald-950 font-black px-6 py-2.5 rounded-full shadow-md hover:shadow-amber-500/20 transition flex items-center gap-2 transform active:scale-95 text-xs uppercase tracking-wider"
             >
               <ShoppingBag className="w-4 h-4 text-emerald-950" />
               <span>{t.orderNow}</span>
@@ -96,40 +96,6 @@ export function Navbar({ onOpenOrderModal, cartCount }: { onOpenOrderModal: () =
 
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#071d17] border-b border-emerald-800 px-4 pt-2 pb-5 space-y-3">
-          <div className="flex justify-center gap-2 py-1.5 border-b border-emerald-800/60">
-            {(['en', 'hi', 'bn'] as Language[]).map((l) => (
-              <button
-                key={l}
-                onClick={() => setLang(l)}
-                className={`px-3 py-1 rounded-full text-xs uppercase font-bold ${
-                  lang === l ? "bg-amber-400 text-emerald-950" : "bg-emerald-900 text-emerald-200"
-                }`}
-              >
-                {l === 'en' ? 'English' : l === 'hi' ? 'हिंदी' : 'বাংলা'}
-              </button>
-            ))}
-          </div>
-
-          <div className="grid grid-cols-2 gap-2 font-bold text-emerald-100 text-xs uppercase pt-1">
-            <Link href="/" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">{t.navHome}</Link>
-            <Link href="/menu" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">{t.navMenu}</Link>
-            <Link href="/paani" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">{t.navPaani}</Link>
-            <Link href="/catering" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-900 text-amber-300 rounded-xl flex items-center gap-1">
-              <PartyPopper className="w-3.5 h-3.5" /> {t.navCatering}
-            </Link>
-            <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">{t.navAbout}</Link>
-            <Link href="/visit" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 rounded-xl">{t.navVisit}</Link>
-            <Link href="/track" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 text-emerald-300 rounded-xl">{t.navTrack}</Link>
-            <Link href="/admin/login" onClick={() => setMobileMenuOpen(false)} className="p-2 bg-emerald-950 text-emerald-400 rounded-xl flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5" /> {t.navAdmin}
-            </Link>
-          </div>
-        </div>
-      )}
     </nav>
   );
 }

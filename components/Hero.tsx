@@ -2,17 +2,15 @@
 
 import React from "react";
 import { useLanguage } from "@/components/LanguageContext";
-import { Award, Sparkles, MapPin, ArrowRight, PartyPopper, PhoneCall } from "lucide-react";
+import { Award, Sparkles, MapPin, ArrowRight, PartyPopper } from "lucide-react";
 import Link from "next/link";
 
 export function Hero({ onBookNow }: { onBookNow: () => void }) {
   const { t } = useLanguage();
 
   return (
-    <section id="home" className="relative overflow-hidden bg-gradient-to-b from-[#071d17] via-[#0f382c] to-[#0a271f] text-white py-16 lg:py-24">
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="home" className="relative overflow-hidden bg-gradient-to-b from-[#071d17] via-[#0f382c] to-[#0a271f] text-white py-16 lg:py-24 w-full">
+      <div className="w-full px-4 sm:px-8 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
           {/* Left Text */}
@@ -66,7 +64,7 @@ export function Hero({ onBookNow }: { onBookNow: () => void }) {
 
           {/* Right Image Feature */}
           <div className="relative flex justify-center">
-            <div className="relative w-full max-w-lg aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-amber-400/40 transform hover:scale-[1.02] transition duration-300">
+            <div className="relative w-full max-w-xl aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-amber-400/40 transform hover:scale-[1.02] transition duration-300">
               <img
                 src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=1000&q=80"
                 alt="100% Authentic Golgappa Plate"
