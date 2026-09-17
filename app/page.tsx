@@ -171,7 +171,7 @@ export default function HomePage() {
           </div>
 
           <p className="text-[11px] text-emerald-600 text-center pt-8 border-t border-emerald-900/60 font-semibold">
-            © 2026 THE GOLGAPPA CO. All Rights Reserved. Crafted with <Heart className="w-3 h-3 text-red-500 inline mx-0.5 fill-red-500" /> for Indian Street Food Lovers.
+            © {new Date().getFullYear()} THE GOLGAPPA CO. All Rights Reserved. Crafted with <Heart className="w-3 h-3 text-red-500 inline mx-0.5 fill-red-500" /> for Indian Street Food Lovers.
           </p>
 
         </div>

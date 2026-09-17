@@ -25,11 +25,30 @@ export function MenuSection({
   cart: { [id: string]: number };
 }) {
   const { t } = useLanguage();
+  const [selectedCategory, setSelectedCategory] = React.useState<string>("ALL");
+  const [searchQuery, setSearchQuery] = React.useState<string>("");
+
+  const categories = ["ALL", "CLASSIC", "PREMIUM", "SWEET", "SPICY"];
+
+  const filteredProducts = products.filter((prod) => {
+    const matchesCategory =
+      selectedCategory === "ALL" ||
+      (selectedCategory === "CLASSIC" && prod.name.toLowerCase().includes("classic")) ||
+      (selectedCategory === "PREMIUM" && (prod.name.toLowerCase().includes("cheese") || prod.name.toLowerCase().includes("dahi"))) ||
+      (selectedCategory === "SWEET" && prod.name.toLowerCase().includes("meetha")) ||
+      (selectedCategory === "SPICY" && (prod.spiceLevel.toLowerCase().includes("high") || prod.name.toLowerCase().includes("teekha")));
+
+    const matchesSearch =
+      prod.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      prod.description.toLowerCase().includes(searchQuery.toLowerCase());
+
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <section id="menu" className="py-24 w-full bg-[#faf7f2] text-gray-900 border-t border-emerald-900/10 relative overflow-hidden">
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10 space-y-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10 space-y-12">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -51,9 +70,48 @@ export function MenuSection({
           </p>
         </div>
 
+        {/* Filter Pills & Search Bar (New Feature) */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 bg-white p-4 rounded-3xl shadow-lg border border-emerald-900/10">
+          {/* Category Filter Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-5 py-2 rounded-2xl text-xs font-black uppercase tracking-wider transition ${
+                  selectedCategory === cat
+                    ? "bg-[#0f382c] text-amber-300 shadow-md"
+                    : "bg-emerald-50 hover:bg-emerald-100 text-emerald-900 font-bold"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Search Box */}
+          <div className="w-full md:w-72 relative">
+            <input
+              type="text"
+              placeholder="Search flavours..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-emerald-50/60 border border-emerald-200 text-gray-900 text-xs font-bold rounded-2xl px-4 py-2.5 outline-none focus:border-emerald-600 transition placeholder-gray-400"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3 top-2.5 text-xs text-gray-400 hover:text-gray-600 font-bold"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+        </div>
+
         {/* Light Theme Equal Height Product Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-          {products.map((prod, idx) => {
+          {filteredProducts.map((prod, idx) => {
             const countInCart = cart[prod.id] || 0;
 
             return (
