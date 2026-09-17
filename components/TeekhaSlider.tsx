@@ -12,39 +12,39 @@ export function TeekhaSlider() {
     switch (level) {
       case 1:
         return {
-          title: t.spiceMildTitle,
-          desc: t.spiceMildDesc,
+          title: t.spiceMildTitle || "Mild & Mellow (Sweet Pudina)",
+          desc: t.spiceMildDesc || "Crafted for gentle palates. Infused with sweet dates, fresh mint, and mild roasted cumin.",
           bg: "bg-[#faf7f2]",
           flameCount: 1,
-          badgeColor: "bg-amber-500 text-white",
+          badgeColor: "bg-amber-500 text-white shadow-amber-500/20",
           image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80",
         };
       case 2:
         return {
-          title: t.spiceMedTitle,
-          desc: t.spiceMedDesc,
+          title: t.spiceMedTitle || "Balanced Classic (Desi Pudina)",
+          desc: t.spiceMedDesc || "The quintessential Indian street flavour. Equal harmony of zesty lemon, black salt, and green chilli.",
           bg: "bg-[#faf7f2]",
           flameCount: 2,
-          badgeColor: "bg-emerald-600 text-white",
+          badgeColor: "bg-emerald-600 text-white shadow-emerald-600/20",
           image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80",
         };
       case 3:
         return {
-          title: t.spiceSpicyTitle,
-          desc: t.spiceSpicyDesc,
+          title: t.spiceSpicyTitle || "Fiery Teekha (Hing & Mirch)",
+          desc: t.spiceSpicyDesc || "For true spice enthusiasts. Packed with crushed Mathania red chillies and strong asafoetida.",
           bg: "bg-[#faf7f2]",
           flameCount: 3,
-          badgeColor: "bg-orange-600 text-white",
+          badgeColor: "bg-orange-600 text-white shadow-orange-600/20",
           image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80",
         };
       case 4:
       default:
         return {
-          title: t.spiceExtraTitle,
-          desc: t.spiceExtraDesc,
+          title: t.spiceExtraTitle || "Extreme Fire (Ghost Mirch Special)",
+          desc: t.spiceExtraDesc || "Our signature challenge level. Extreme heat balanced with authentic Indian spice extracts.",
           bg: "bg-[#faf7f2]",
           flameCount: 4,
-          badgeColor: "bg-red-600 text-white animate-pulse",
+          badgeColor: "bg-red-600 text-white animate-pulse shadow-red-600/30",
           image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80",
         };
     }
