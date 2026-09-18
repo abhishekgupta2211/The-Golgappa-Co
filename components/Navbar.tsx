@@ -51,6 +51,7 @@ export function Navbar({ onOpenOrderModal, cartCount }: { onOpenOrderModal: () =
               <select
                 value={lang}
                 onChange={(e) => setLang(e.target.value as Language)}
+                aria-label="Select Language"
                 className="bg-transparent text-white font-black text-xs uppercase outline-none cursor-pointer pr-1"
               >
                 <option value="en" className="bg-[#071d17] text-white">English (EN)</option>
