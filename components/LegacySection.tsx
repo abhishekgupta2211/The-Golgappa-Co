@@ -16,7 +16,7 @@ export function LegacySection() {
           
           {/* Left Large Oversized Number */}
           <div className="lg:col-span-5 space-y-4">
-            <span className="text-emerald-800 font-extrabold uppercase tracking-widest text-xs bg-emerald-100 px-4 py-1.5 rounded-full border border-emerald-300">
+            <span className="text-emerald-800 font-extrabold uppercase tracking-widest text-xs bg-emerald-100 px-4 py-1.5 rounded-full border border-emerald-300 shadow-xs">
               HERITAGE & TRADITION
             </span>
             
