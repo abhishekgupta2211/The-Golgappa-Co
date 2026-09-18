@@ -15,7 +15,7 @@ export function GolgappaInteractiveAnimation() {
       sub: "Fried Fresh Daily",
       desc: "Fried in clean oil until ultra crunchy. The top crust cracks with a crisp sound to open the perfect hollow pocket.",
       icon: "🧆",
-      badge: "Pure Golden Gold",
+      badge: "Pure Golden Crispy Crust",
       img: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80",
     },
     {
