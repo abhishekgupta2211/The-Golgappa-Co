@@ -15,8 +15,9 @@ export function ReviewsSection() {
       date: "2 days ago",
       comment: "Best Golgappa in the entire market! Mahesh Kumar Gupta Ji's Teekha Pudina Paani is unmatched. Super crispy puris fried in fresh oil with clean mineral water.",
       initials: "AV",
-      bgColor: "bg-blue-600",
-      likes: 12,
+      bgColor: "bg-[#0f382c]",
+      likes: 14,
+      verified: true,
     },
     {
       id: 2,
