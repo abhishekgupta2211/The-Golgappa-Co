@@ -174,7 +174,7 @@ export function OrderDrawer({
               {step === 5 && "Booking Confirmed!"}
             </p>
           </div>
-          <button onClick={onClose} className="p-2 rounded-full hover:bg-emerald-900 text-emerald-200 hover:text-white">
+          <button onClick={onClose} aria-label="Close Order Drawer" className="p-2 rounded-full hover:bg-emerald-900 text-emerald-200 hover:text-white transition">
             <X className="w-6 h-6" />
           </button>
         </div>
